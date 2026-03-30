@@ -1,286 +1,332 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarjana Gems - Produk AI & Indikator Trading</title>
+    <title>Sarjana Gems | Premium AI & Trading Tools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary: #10b981;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
         }
+
         body {
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #f9fafb;
-            color: #111827;
-            line-height: 1.5;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
+
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 2rem 1.5rem;
+            padding: 4rem 1.5rem;
         }
-        /* Header */
+
+        /* --- Header Section --- */
         .header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 5rem;
         }
-        .badge {
-            display: inline-block;
-            background: #e0e7ff;
-            color: #4338ca;
+
+        .badge-premium {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1.25rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
             font-weight: 600;
-            padding: 0.25rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(79, 70, 229, 0.2);
         }
+
         h1 {
-            font-size: 2.5rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 800;
-            letter-spacing: -0.025em;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #1e3a8a, #9333ea);
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #1e293b, #4f46e5);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
+
         .subhead {
-            font-size: 1.25rem;
-            color: #4b5563;
-            max-width: 700px;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
             margin: 0 auto;
         }
-        /* Grid Produk */
-        .section-title {
-            font-size: 1.875rem;
+
+        /* --- Products Grid --- */
+        .grid-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-weight: 700;
-            text-align: center;
+            font-size: 1.25rem;
             margin-bottom: 2rem;
+            color: #1e293b;
         }
+
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
         }
+
         .product-card {
-            background: white;
-            border-radius: 1.5rem;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
+
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: var(--primary);
         }
-        .product-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            background: #eef2ff;
+
+        .icon-box {
+            width: 56px;
+            height: 56px;
+            background: #f1f5f9;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            transition: 0.3s;
         }
-        .product-info {
-            padding: 1.5rem;
+
+        .product-card:hover .icon-box {
+            background: var(--primary);
+            color: white;
         }
+
         .product-title {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
+
         .product-desc {
-            color: #4b5563;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
         }
-        .product-price {
+
+        .price-tag {
+            border-top: 1px solid #f1f5f9;
+            padding-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .price-value {
             font-size: 1.5rem;
             font-weight: 800;
-            color: #059669;
-            margin: 1rem 0;
+            color: var(--text-main);
         }
-        .btn-wa {
-            display: inline-block;
-            background: #25D366;
+
+        .btn-buy {
+            background: var(--text-main);
             color: white;
-            font-weight: 700;
-            padding: 0.75rem 1.5rem;
-            border-radius: 9999px;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
             text-decoration: none;
-            font-size: 0.875rem;
-            text-align: center;
-            width: 100%;
-            transition: background 0.2s;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
         }
-        .btn-wa:hover {
-            background: #128C7E;
+
+        .btn-buy:hover {
+            background: var(--primary);
         }
-        /* Tabel (opsional, seperti top gainer) */
-        .table-section {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            margin-top: 2rem;
+
+        /* --- Performance Table --- */
+        .stats-container {
+            background: #1e293b;
+            border-radius: 24px;
+            padding: 2.5rem;
+            color: white;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
         }
-        .table-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+
+        .stats-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
         }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
         }
-        th, td {
-            padding: 0.75rem;
-            text-align: left;
-            border-bottom: 1px solid #e5e7eb;
-        }
+
         th {
-            background: #f3f4f6;
-            font-weight: 600;
+            text-align: left;
+            padding: 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+            border-bottom: 1px solid #334155;
         }
-        .positive {
-            color: #10b981;
+
+        td {
+            padding: 1.25rem 1rem;
+            border-bottom: 1px solid #334155;
+            font-size: 0.95rem;
         }
-        .negative {
-            color: #ef4444;
-        }
+
+        .pnl-positive { color: #4ade80; font-weight: 600; }
+
+        /* --- Footer --- */
         .footer {
+            margin-top: 6rem;
             text-align: center;
-            border-top: 1px solid #e5e7eb;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            color: #6b7280;
-            font-size: 0.875rem;
+            padding: 3rem 0;
+            border-top: 1px solid #e2e8f0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 2.25rem; }
             .products-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="badge">🔥 Sarjana Gems - Solusi Digital</div>
-            <h1>AI & Indikator Trading<br>Untuk Maksimalkan Profit Anda</h1>
-            <div class="subhead">
-                Pilih produk yang sesuai dengan kebutuhan Anda. Semua produk digital dengan pembayaran manual via WhatsApp.
+
+<div class="container">
+    <header class="header">
+        <div class="badge-premium">
+            <i data-lucide="sparkles" size="16"></i>
+            Premium Digital Solutions
+        </div>
+        <h1>Elevasi Trading & Bisnis<br>Dengan Teknologi AI</h1>
+        <p class="subhead">Tools eksklusif yang dirancang untuk efisiensi maksimal dan profitabilitas terukur.</p>
+    </header>
+
+    <div class="grid-label">
+        <i data-lucide="layout-grid"></i> Produk Unggulan
+    </div>
+
+    <div class="products-grid">
+        <div class="product-card">
+            <div class="icon-box"><i data-lucide="video"></i></div>
+            <h3 class="product-title">AI Livestream TikTok</h3>
+            <p class="product-desc">Otomasi interaksi live streaming. AI akan mengelola komentar dan promosi produk secara cerdas selama 24/7.</p>
+            <div class="price-tag">
+                <span class="price-value">Rp 149k</span>
+                <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20beli%20AI%20Livestreaming%20TikTok" class="btn-buy">
+                    Beli <i data-lucide="arrow-right" size="16"></i>
+                </a>
             </div>
         </div>
 
-        <!-- Daftar Produk -->
-        <div class="section-title">🚀 Produk Unggulan</div>
-        <div class="products-grid">
-            <!-- Produk 1: AI Livestreaming Jualan TikTok -->
-            <div class="product-card">
-                <div class="product-image">🎥</div>
-                <div class="product-info">
-                    <div class="product-title">AI Livestreaming Jualan TikTok</div>
-                    <div class="product-desc">
-                        Asisten AI yang membantu Anda saat live streaming TikTok. Otomatis membalas komentar, menawarkan produk, dan meningkatkan engagement.
-                    </div>
-                    <div class="product-price">Rp 149.000</div>
-                    <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20beli%20AI%20Livestreaming%20TikTok" class="btn-wa" target="_blank">
-                        📲 Beli via WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- Produk 2: AI Assistant Live TikTok & YouTube -->
-            <div class="product-card">
-                <div class="product-image">🤖</div>
-                <div class="product-info">
-                    <div class="product-title">AI Assistant Live TikTok & YouTube</div>
-                    <div class="product-desc">
-                        Versi lebih lengkap untuk live streaming di TikTok dan YouTube. Fitur tambahan: analisis sentimen penonton, auto-clip highlight, dan dashboard real-time.
-                    </div>
-                    <div class="product-price">Rp 299.000</div>
-                    <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20beli%20AI%20Assistant%20Live" class="btn-wa" target="_blank">
-                        📲 Beli via WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- Produk 3: REX Indikator Trading -->
-            <div class="product-card">
-                <div class="product-image">📈</div>
-                <div class="product-info">
-                    <div class="product-title">REX Indikator Trading</div>
-                    <div class="product-desc">
-                        Indikator proprietary untuk trading saham dan forex. Memberikan sinyal entry/exit akurat. Cocok untuk scalping, swing, dan trend following.
-                    </div>
-                    <div class="product-price">Rp 500.000</div>
-                    <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20beli%20REX%20Indikator" class="btn-wa" target="_blank">
-                        📲 Beli via WhatsApp
-                    </a>
-                </div>
+        <div class="product-card">
+            <div class="icon-box"><i data-lucide="bot"></i></div>
+            <h3 class="product-title">AI Assistant Pro</h3>
+            <p class="product-desc">Dashboard komprehensif untuk TikTok & YouTube. Termasuk fitur sentiment analysis dan auto-highlight untuk engagement tinggi.</p>
+            <div class="price-tag">
+                <span class="price-value">Rp 299k</span>
+                <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20beli%20AI%20Assistant%20Live" class="btn-buy">
+                    Beli <i data-lucide="arrow-right" size="16"></i>
+                </a>
             </div>
         </div>
 
-        <!-- Opsional: Tambah produk lain dengan menyalin div product-card di atas -->
-        <!-- Contoh produk ke-4 (silahkan aktifkan dengan menghapus komentar) -->
-        <!--
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-image">📊</div>
-                <div class="product-info">
-                    <div class="product-title">Nama Produk 4</div>
-                    <div class="product-desc">Deskripsi produk keempat.</div>
-                    <div class="product-price">Rp xxx.xxx</div>
-                    <a href="https://wa.me/6281234567890?text=..." class="btn-wa" target="_blank">📲 Beli via WhatsApp</a>
-                </div>
+        <div class="product-card">
+            <div class="icon-box"><i data-lucide="trending-up"></i></div>
+            <h3 class="product-title">REX Indicator V2</h3>
+            <p class="product-desc">Algoritma khusus untuk Saham & Forex. Memberikan sinyal presisi tinggi untuk Scalping dan Swing Trading.</p>
+            <div class="price-tag">
+                <span class="price-value">Rp 500k</span>
+                <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20beli%20REX%20Indikator" class="btn-buy">
+                    Beli <i data-lucide="arrow-right" size="16"></i>
+                </a>
             </div>
         </div>
-        -->
+    </div>
 
-        <!-- Bagian Tabel Top Gainer (mirip contoh screenshot) -->
-        <div class="table-section">
-            <div class="table-title">🏆 Top Gainer (Rp) - Update 30 Maret 2025</div>
+    <section class="stats-container">
+        <div class="stats-header">
+            <div>
+                <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Performa Portofolio</h2>
+                <p style="color: #94a3b8; font-size: 0.85rem;">Update Terakhir: 30 Maret 2026</p>
+            </div>
+            <div class="icon-box" style="margin-bottom:0; background: rgba(255,255,255,0.05); color: white;">
+                <i data-lucide="award"></i>
+            </div>
+        </div>
+        <div class="table-wrapper">
             <table>
                 <thead>
                     <tr>
-                        <th>Kode</th>
+                        <th>Asset Code</th>
                         <th>Trades</th>
-                        <th>P&L</th>
+                        <th>Net Profit & Loss</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>PPRE</td><td>3</td><td class="positive">+16,457,321 (+12.34%)</td></tr>
-                    <tr><td>PADA</td><td>5</td><td class="positive">+6,457,893 (+9.87%)</td></tr>
-                    <tr><td>ELSA</td><td>1</td><td class="positive">+3,671,259 (+11.56%)</td></tr>
-                    <tr><td>BUMI</td><td>4</td><td class="positive">+2,735,487 (+3.21%)</td></tr>
-                    <tr><td>KIJA</td><td>2</td><td class="positive">+2,613,795 (+7.89%)</td></tr>
-                    <tr><td>ANTM</td><td>5</td><td class="positive">+2,589,641 (+4.32%)</td></tr>
-                    <tr><td>BRMS</td><td>1</td><td class="positive">+1,234,567 (+6.54%)</td></tr>
-                    <tr><td>PIPA</td><td>3</td><td class="positive">+896,321 (+0.51%)</td></tr>
+                    <tr><td>PPRE</td><td>3</td><td class="pnl-positive">+16,457,321 (12.3%)</td></tr>
+                    <tr><td>PADA</td><td>5</td><td class="pnl-positive">+6,457,893 (9.8%)</td></tr>
+                    <tr><td>ELSA</td><td>1</td><td class="pnl-positive">+3,671,259 (11.5%)</td></tr>
+                    <tr><td>BUMI</td><td>4</td><td class="pnl-positive">+2,735,487 (3.2%)</td></tr>
                 </tbody>
             </table>
-            <p style="margin-top: 1rem; font-size: 0.75rem; color: #6b7280;">*Data hanya ilustrasi, pergerakan real dapat berbeda.</p>
         </div>
+    </section>
 
-        <!-- Cara Pembelian -->
-        <div style="background: white; border-radius: 1.5rem; padding: 1.5rem; margin-top: 2rem;">
-            <div class="section-title" style="margin-bottom: 1rem;">🛒 Cara Beli Produk</div>
-            <ol style="margin-left: 1.5rem; color: #374151;">
-                <li>Klik tombol <strong>“Beli via WhatsApp”</strong> pada produk yang diinginkan.</li>
-                <li>Kirim pesan konfirmasi produk yang ingin dibeli.</li>
-                <li>Lakukan pembayaran manual (transfer bank / e-wallet) sesuai harga yang tertera.</li>
-                <li>Produk digital akan dikirim ke WhatsApp Anda setelah pembayaran dikonfirmasi.</li>
-            </ol>
-        </div>
+    <footer class="footer">
+        <p>&copy; 2026 Sarjana Gems. Crafted for Professional Traders.</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">Support: +62 812-3456-7890 (WhatsApp Only)</p>
+    </footer>
+</div>
 
-        <div class="footer">
-            © 2025 Sarjana Gems. Semua produk adalah digital dan tidak dapat dikembalikan.<br>
-            Untuk dukungan, hubungi +62 812-3456-7890 (WhatsApp).
-        </div>
-    </div>
+<script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+</script>
+
 </body>
 </html>
