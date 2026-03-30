@@ -90,6 +90,7 @@
             font-size: 1.25rem;
             margin-bottom: 2rem;
             color: #1e293b;
+            justify-content: center;
         }
 
         /* --- Product Cards Grid --- */
@@ -226,39 +227,56 @@
             color: var(--text-muted);
         }
 
-        /* --- Testimonial Section --- */
-        .testi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+        /* --- Testimonial Slider Section --- */
+        .testimonial-section {
             margin-bottom: 6rem;
+            position: relative;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
+        .slider-wrapper {
+            overflow: hidden;
+            border-radius: 24px;
+            padding: 10px; /* Space for shadow */
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Setiap card testimoni mengambil 100% lebar container */
         .testi-card {
+            flex: 0 0 100%;
             background: white;
-            padding: 2.5rem;
+            padding: 3rem;
             border-radius: 24px;
             border: 1px solid var(--border);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            box-sizing: border-box;
         }
 
         .rating-stars {
             display: flex;
             gap: 4px;
             color: #f59e0b;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
         }
 
         .user-info {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-top: 1.5rem;
+            gap: 15px;
+            margin-top: 2rem;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 1.5rem;
         }
 
         .avatar {
-            width: 44px;
-            height: 44px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: #f1f5f9;
             display: flex;
@@ -266,8 +284,37 @@
             justify-content: center;
             font-weight: 800;
             color: var(--primary);
-            font-size: 0.85rem;
+            font-size: 1rem;
         }
+
+        /* Slider Controls (Panah) */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            color: var(--text-main);
+            z-index: 10;
+            transition: all 0.2s;
+        }
+
+        .slider-nav:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .slider-nav.prev { left: -20px; }
+        .slider-nav.next { right: -20px; }
 
         /* --- Footer --- */
         .footer {
@@ -278,10 +325,15 @@
             font-size: 0.9rem;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             h1 { font-size: 2.25rem; }
             .container { padding-top: 2rem; }
-            .product-card { padding: 1.5rem; }
+            .testi-card { padding: 2rem 1.5rem; }
+            /* Memindahkan panah ke bawah pada layar kecil agar tidak terpotong */
+            .slider-nav { top: auto; bottom: -20px; transform: none; }
+            .slider-nav.prev { left: 35%; }
+            .slider-nav.next { right: 35%; }
+            .testimonial-section { padding-bottom: 3rem; }
         }
     </style>
 </head>
@@ -297,7 +349,7 @@
         <p class="subhead">Solusi cerdas untuk trader profesional dan seller TikTok yang ingin efisiensi tanpa batas.</p>
     </header>
 
-    <div class="section-label">
+    <div class="section-label" style="justify-content: flex-start;">
         <i data-lucide="package"></i> Produk Kami
     </div>
 
@@ -307,8 +359,8 @@
             <h3 class="product-title">AI Livestream TikTok</h3>
             <p class="product-desc">Otomasi total live streaming. AI akan merespon komentar dan menjual produk Anda 24/7 tanpa henti.</p>
             <div class="price-tag">
-                <span class="price-value">Rp 1,5Jt</span>
-                <a href="https://wa.me/62895419100905?text=Halo%2C%20saya%20ingin%20beli%20AI%20Livestreaming%20TikTok" class="btn-buy" target="_blank">
+                <span class="price-value">Rp 149k</span>
+                <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Livestream%20TikTok" class="btn-buy" target="_blank">
                     Beli <i data-lucide="arrow-right" size="16"></i>
                 </a>
             </div>
@@ -319,8 +371,8 @@
             <h3 class="product-title">AI Assistant Pro</h3>
             <p class="product-desc">Dashboard premium untuk TikTok & YouTube. Fitur analisis sentimen dan auto-clip untuk konten viral.</p>
             <div class="price-tag">
-                <span class="price-value">Rp 600k</span>
-                <a href="https://wa.me/62895419100905?text=Halo%2C%20saya%20ingin%20beli%20AI%20Assistant%20Live" class="btn-buy" target="_blank">
+                <span class="price-value">Rp 299k</span>
+                <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Assistant%20Pro" class="btn-buy" target="_blank">
                     Beli <i data-lucide="arrow-right" size="16"></i>
                 </a>
             </div>
@@ -328,11 +380,11 @@
 
         <div class="product-card">
             <div class="icon-box"><i data-lucide="trending-up"></i></div>
-            <h3 class="product-title">REX Indicator</h3>
+            <h3 class="product-title">REX Indicator V2</h3>
             <p class="product-desc">Sinyal trading presisi untuk Saham & Forex. Cocok untuk strategi Scalping dan Swing dengan sinyal akurat.</p>
             <div class="price-tag">
                 <span class="price-value">Rp 500k</span>
-                <a href="https://wa.me/62895419100905?text=Halo%2C%20saya%20ingin%20beli%20REX%20Indikator" class="btn-buy" target="_blank">
+                <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20REX%20Indicator%20V2" class="btn-buy" target="_blank">
                     Beli <i data-lucide="arrow-right" size="16"></i>
                 </a>
             </div>
@@ -340,7 +392,7 @@
     </div>
 
     <section class="features-container">
-        <div class="section-label" style="justify-content: center;">
+        <div class="section-label">
             <i data-lucide="shield-check"></i> Mengapa Sarjana Gems?
         </div>
         <div class="features-grid">
@@ -368,46 +420,58 @@
         </div>
     </section>
 
-    <section>
-        <div class="section-label" style="justify-content: center;">
+    <section class="testimonial-section">
+        <div class="section-label">
             <i data-lucide="message-square"></i> Apa Kata Mereka?
         </div>
-        <div class="testi-grid">
-            <div class="testi-card">
-                <div class="rating-stars">
-                    <i data-lucide="star" size="16" fill="#f59e0b"></i>
-                    <i data-lucide="star" size="16" fill="#f59e0b"></i>
-                    <i data-lucide="star" size="16" fill="#f59e0b"></i>
-                    <i data-lucide="star" size="16" fill="#f59e0b"></i>
-                    <i data-lucide="star" size="16" fill="#f59e0b"></i>
-                </div>
-                <p style="font-style: italic; font-size: 0.95rem;">"Indikator REX sangat membantu untuk scalping di XAU/USD. Sinyalnya sangat clean dan akurasinya luar biasa!"</p>
-                <div class="user-info">
-                    <div class="avatar">AR</div>
-                    <div>
-                        <p style="font-weight: 700; font-size: 0.9rem;">Andrian R.</p>
-                        <p style="font-size: 0.75rem; color: var(--text-muted);">Full-time Trader</p>
-                    </div>
-                </div>
-            </div>
+        
+        <button class="slider-nav prev" id="btnPrev"><i data-lucide="chevron-left"></i></button>
+        <button class="slider-nav next" id="btnNext"><i data-lucide="chevron-right"></i></button>
 
-            <div class="testi-card">
-                <div class="rating-stars">
-                    <i data-lucide="star" size="16" fill="#f59e0b"></i>
-                    <i data-lucide="star" size="16" fill="#f59e0b"></i>
-                    <i data-lucide="star" size="16" fill="#f59e0b"></i>
-                    <i data-lucide="star" size="16" fill="#f59e0b"></i>
-                    <i data-lucide="star" size="16" fill="#f59e0b"></i>
-                </div>
-                <p style="font-style: italic; font-size: 0.95rem;">"AI Livestream TikTok-nya gila! Omzet naik signifikan bulan ini karena bisa live 24 jam nonstop."</p>
-                <div class="user-info">
-                    <div class="avatar">SM</div>
-                    <div>
-                        <p style="font-weight: 700; font-size: 0.9rem;">Siska M.</p>
-                        <p style="font-size: 0.75rem; color: var(--text-muted);">TikTok Shop Owner</p>
+        <div class="slider-wrapper">
+            <div class="slider-track" id="sliderTrack">
+                
+                <div class="testi-card">
+                    <div class="rating-stars">
+                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
+                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
+                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
+                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
+                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
+                    </div>
+                    <p style="font-style: italic; font-size: 1.1rem; color: var(--text-main); line-height: 1.8;">
+                        "Indikator REX sangat membantu untuk scalping di XAU/USD. Sinyalnya sangat clean dan akurasinya luar biasa! Setup sangat mudah diikuti."
+                    </p>
+                    <div class="user-info">
+                        <div class="avatar">AR</div>
+                        <div>
+                            <p style="font-weight: 700; font-size: 1rem;">Andrian R.</p>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Full-time Trader</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <div class="testi-card">
+                    <div class="rating-stars">
+                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
+                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
+                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
+                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
+                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
+                    </div>
+                    <p style="font-style: italic; font-size: 1.1rem; color: var(--text-main); line-height: 1.8;">
+                        "AI Livestream TikTok-nya gila! Omzet naik signifikan bulan ini karena bisa live 24 jam nonstop tanpa harus selalu di depan layar."
+                    </p>
+                    <div class="user-info">
+                        <div class="avatar">SM</div>
+                        <div>
+                            <p style="font-weight: 700; font-size: 1rem;">Siska M.</p>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">TikTok Shop Owner</p>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
         </div>
     </section>
 
@@ -418,8 +482,67 @@
 </div>
 
 <script>
-    // Activate Lucide Icons
+    // 1. Activate Lucide Icons
     lucide.createIcons();
+
+    // 2. Logic untuk Testimonial Slider
+    const track = document.getElementById('sliderTrack');
+    const slides = document.querySelectorAll('.testi-card');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    let autoSlideInterval;
+
+    // Fungsi untuk menggeser slide
+    function updateSliderPosition() {
+        // Menggeser track sejauh 100% dikali index saat ini
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // Fungsi ke slide berikutnya
+    function nextSlide() {
+        currentIndex++;
+        if (currentIndex >= totalSlides) {
+            currentIndex = 0; // Kembali ke awal jika sudah di akhir
+        }
+        updateSliderPosition();
+    }
+
+    // Fungsi ke slide sebelumnya
+    function prevSlide() {
+        currentIndex--;
+        if (currentIndex < 0) {
+            currentIndex = totalSlides - 1; // Ke akhir jika di awal
+        }
+        updateSliderPosition();
+    }
+
+    // Fungsi untuk memulai geser otomatis tiap 5 detik (5000 ms)
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+
+    // Fungsi untuk mereset timer saat tombol diklik (agar tidak bentrok)
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+    }
+
+    // Event Listener untuk tombol
+    btnNext.addEventListener('click', () => {
+        nextSlide();
+        resetAutoSlide();
+    });
+
+    btnPrev.addEventListener('click', () => {
+        prevSlide();
+        resetAutoSlide();
+    });
+
+    // Mulai slider otomatis saat web dimuat
+    startAutoSlide();
 </script>
 
 </body>
