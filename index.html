@@ -99,6 +99,7 @@
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             margin-bottom: 5rem;
+            align-items: center; /* Untuk menyeimbangkan kartu yang di-highlight */
         }
 
         .product-card {
@@ -109,12 +110,41 @@
             display: flex;
             flex-direction: column;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
 
         .product-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.08);
             border-color: var(--primary);
+        }
+
+        /* Highlight Card (Paling Laris) */
+        .product-card.highlight {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.15);
+            z-index: 2;
+        }
+
+        .product-card.highlight:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .badge-popular {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.4);
         }
 
         .icon-box {
@@ -131,6 +161,11 @@
         }
 
         .product-card:hover .icon-box {
+            background: var(--primary);
+            color: white;
+        }
+
+        .product-card.highlight .icon-box {
             background: var(--primary);
             color: white;
         }
@@ -177,8 +212,15 @@
         }
 
         .btn-buy:hover {
+            background: var(--primary-dark);
+        }
+        
+        /* Tombol khusus untuk produk highlight */
+        .product-card.highlight .btn-buy {
             background: var(--primary);
-            transform: scale(1.05);
+        }
+        .product-card.highlight .btn-buy:hover {
+            background: var(--text-main);
         }
 
         /* --- Feature Grid Section --- */
@@ -328,6 +370,11 @@
         @media (max-width: 768px) {
             h1 { font-size: 2.25rem; }
             .container { padding-top: 2rem; }
+            
+            /* Reset highlight effect on mobile to prevent horizontal overflow */
+            .product-card.highlight { transform: none; }
+            .product-card.highlight:hover { transform: translateY(-8px); }
+            
             .testi-card { padding: 2rem 1.5rem; }
             /* Memindahkan panah ke bawah pada layar kecil agar tidak terpotong */
             .slider-nav { top: auto; bottom: -20px; transform: none; }
@@ -349,7 +396,7 @@
         <p class="subhead">Solusi cerdas untuk trader profesional dan seller TikTok yang ingin efisiensi tanpa batas.</p>
     </header>
 
-    <div class="section-label" style="justify-content: flex-start;">
+    <div class="section-label">
         <i data-lucide="package"></i> Produk Kami
     </div>
 
@@ -360,19 +407,20 @@
             <p class="product-desc">Otomasi total live streaming. AI akan merespon komentar dan menjual produk Anda 24/7 tanpa henti.</p>
             <div class="price-tag">
                 <span class="price-value">Rp 149k</span>
-                <a href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Livestream%20TikTok" class="btn-buy" target="_blank">
+                <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Livestream%20TikTok" class="btn-buy" target="_blank">
                     Beli <i data-lucide="arrow-right" size="16"></i>
                 </a>
             </div>
         </div>
 
-        <div class="product-card">
-            <div class="icon-box"><i data-lucide="layout"></i></div>
+        <div class="product-card highlight">
+            <div class="badge-popular">Paling Laris</div>
+            <div class="icon-box"><i data-lucide="bot"></i></div>
             <h3 class="product-title">AI Assistant Pro</h3>
             <p class="product-desc">Dashboard premium untuk TikTok & YouTube. Fitur analisis sentimen dan auto-clip untuk konten viral.</p>
             <div class="price-tag">
                 <span class="price-value">Rp 299k</span>
-                <a href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Assistant%20Pro" class="btn-buy" target="_blank">
+                <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Assistant%20Pro" class="btn-buy" target="_blank">
                     Beli <i data-lucide="arrow-right" size="16"></i>
                 </a>
             </div>
@@ -384,7 +432,7 @@
             <p class="product-desc">Sinyal trading presisi untuk Saham & Forex. Cocok untuk strategi Scalping dan Swing dengan sinyal akurat.</p>
             <div class="price-tag">
                 <span class="price-value">Rp 500k</span>
-                <a href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20REX%20Indicator%20V2" class="btn-buy" target="_blank">
+                <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20REX%20Indicator%20V2" class="btn-buy" target="_blank">
                     Beli <i data-lucide="arrow-right" size="16"></i>
                 </a>
             </div>
@@ -433,65 +481,47 @@
                 
                 <div class="testi-card">
                     <div class="rating-stars">
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
+                        <i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i>
                     </div>
                     <p style="font-style: italic; font-size: 1.1rem; color: var(--text-main); line-height: 1.8;">
-                        "Indikator REX sangat membantu untuk scalping di XAU/USD. Sinyalnya sangat clean dan akurasinya luar biasa! Setup sangat mudah diikuti."
+                        "Sumpah ini ngebantu banget! Dulu paling pusing ngurus jadwal host live yang kadang telat, sakit, atau banyak drama. Pake AI dari Sarjana Gems ini, live toko saya jalan 24 jam nonstop tanpa henti. Omzet malah naik karena toko buka terus."
                     </p>
                     <div class="user-info">
-                        <div class="avatar">AR</div>
+                        <div class="avatar">RM</div>
                         <div>
-                            <p style="font-weight: 700; font-size: 1rem;">Andrian R.</p>
-                            <p style="font-size: 0.85rem; color: var(--text-muted);">Full-time Trader</p>
+                            <p style="font-weight: 700; font-size: 1rem;">Rina M.</p>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Owner Fashion Store</p>
                         </div>
                     </div>
                 </div>
 
-        <div class="slider-wrapper">
-            <div class="slider-track" id="sliderTrack">
-                
                 <div class="testi-card">
                     <div class="rating-stars">
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
+                        <i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i>
                     </div>
                     <p style="font-style: italic; font-size: 1.1rem; color: var(--text-main); line-height: 1.8;">
-                        "Gila sih, ini AI tapi responsif parah. Tiap ada penonton nanya harga atau ongkir di komen, langsung dibalesin otomatis dengan tepat. Engagement live saya naik drastis karena penonton merasa direspons cepat. Sangat worth it buat investasi jangka panjang!"
+                        "Fitur auto-spill nya juara banget! Awalnya ragu apa bisa interaktif, ternyata pas ada penonton komen 'spill nomor 3 kak', AI-nya langsung otomatis muter video produk tersebut. Kelihatan natural banget kayak host beneran!"
                     </p>
                     <div class="user-info">
-                        <div class="avatar">AR</div>
+                        <div class="avatar">DP</div>
                         <div>
-                            <p style="font-weight: 700; font-size: 1rem;">Bima S</p>
-                            <p style="font-size: 0.85rem; color: var(--text-muted);">Owner Gadget Store</p>
+                            <p style="font-weight: 700; font-size: 1rem;">Dika P.</p>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">TikTok Affiliate</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="slider-wrapper">
-                   <div class="slider-track" id="sliderTrack">
-                
                 <div class="testi-card">
                     <div class="rating-stars">
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
+                        <i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i>
                     </div>
                     <p style="font-style: italic; font-size: 1.1rem; color: var(--text-main); line-height: 1.8;">
-                        "Akhirnya bisa tidur nyenyak tapi notif orderan tetep masuk! AI-nya pinter banget nyapa orang yang baru join dan langsung nawarin promo. Bangun pagi tinggal print resi dan rekap pesanan. Nyesel kenapa gak tau tools ini dari dulu, beneran bikin kerjaan makin enteng."
+                        "Akhirnya bisa tidur nyenyak tapi notif orderan tetep masuk! AI-nya pinter banget nyapa orang yang baru join dan langsung nawarin promo. Bangun pagi tinggal print resi dan rekap pesanan. Nyesel kenapa gak tau tools ini dari dulu."
                     </p>
                     <div class="user-info">
-                        <div class="avatar">AR</div>
+                        <div class="avatar">SA</div>
                         <div>
-                            <p style="font-weight: 700; font-size: 1rem;">Siska</p>
+                            <p style="font-weight: 700; font-size: 1rem;">Siska A.</p>
                             <p style="font-size: 0.85rem; color: var(--text-muted);">Seller Skincare</p>
                         </div>
                     </div>
@@ -499,25 +529,21 @@
 
                 <div class="testi-card">
                     <div class="rating-stars">
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i>
+                        <i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i>
                     </div>
                     <p style="font-style: italic; font-size: 1.1rem; color: var(--text-main); line-height: 1.8;">
-                        "AI Livestream TikTok-nya gila! Omzet naik signifikan bulan ini karena bisa live 24 jam nonstop tanpa harus selalu di depan layar."
+                        "Gila sih, ini AI tapi responsif parah. Tiap ada penonton nanya harga atau ongkir di komen, langsung dibalesin otomatis dengan tepat. Engagement live saya naik drastis. Sangat worth it buat investasi jangka panjang!"
                     </p>
                     <div class="user-info">
-                        <div class="avatar">SM</div>
+                        <div class="avatar">BS</div>
                         <div>
-                            <p style="font-weight: 700; font-size: 1rem;">Siska M.</p>
-                            <p style="font-size: 0.85rem; color: var(--text-muted);">TikTok Shop Owner</p>
+                            <p style="font-weight: 700; font-size: 1rem;">Bima S.</p>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Owner Gadget Store</p>
                         </div>
                     </div>
                 </div>
-
-                </div>
+                
+            </div>
         </div>
     </section>
 
@@ -543,7 +569,6 @@
 
     // Fungsi untuk menggeser slide
     function updateSliderPosition() {
-        // Menggeser track sejauh 100% dikali index saat ini
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
 
@@ -551,7 +576,7 @@
     function nextSlide() {
         currentIndex++;
         if (currentIndex >= totalSlides) {
-            currentIndex = 0; // Kembali ke awal jika sudah di akhir
+            currentIndex = 0;
         }
         updateSliderPosition();
     }
@@ -560,23 +585,23 @@
     function prevSlide() {
         currentIndex--;
         if (currentIndex < 0) {
-            currentIndex = totalSlides - 1; // Ke akhir jika di awal
+            currentIndex = totalSlides - 1;
         }
         updateSliderPosition();
     }
 
-    // Fungsi untuk memulai geser otomatis tiap 5 detik (5000 ms)
+    // Fungsi geser otomatis tiap 5 detik
     function startAutoSlide() {
         autoSlideInterval = setInterval(nextSlide, 5000);
     }
 
-    // Fungsi untuk mereset timer saat tombol diklik (agar tidak bentrok)
+    // Reset timer jika tombol diklik manual
     function resetAutoSlide() {
         clearInterval(autoSlideInterval);
         startAutoSlide();
     }
 
-    // Event Listener untuk tombol
+    // Event Listener
     btnNext.addEventListener('click', () => {
         nextSlide();
         resetAutoSlide();
@@ -587,7 +612,7 @@
         resetAutoSlide();
     });
 
-    // Mulai slider otomatis saat web dimuat
+    // Mulai slider saat halaman diload
     startAutoSlide();
 </script>
 
