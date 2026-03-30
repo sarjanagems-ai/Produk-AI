@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamMate AI – Alat Bantu AI untuk Live Streaming</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f9fafb;
+            color: #111827;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #4338ca;
+            font-weight: 600;
+            padding: 0.25rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #1e3a8a, #9333ea);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .subhead {
+            font-size: 1.25rem;
+            color: #4b5563;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 4rem;
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #059669;
+            margin: 1.5rem 0;
+        }
+
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #25D366;
+            color: white;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-size: 1.125rem;
+            transition: transform 0.2s, background 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-wa:hover {
+            background: #128C7E;
+            transform: scale(1.02);
+        }
+
+        /* Features */
+        .features {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* FAQ */
+        .faq {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem 0;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .hero {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="badge">🔥 Produk Digital</div>
+            <h1>StreamMate AI<br>Asisten Cerdas untuk Live Streaming</h1>
+            <div class="subhead">
+                Otomatiskan respons chat, buat clip highlight, dan tingkatkan engagement dengan tenaga AI.
+            </div>
+        </div>
+
+        <!-- Hero & CTA -->
+        <div class="hero">
+            <div class="hero-content">
+                <h2 style="font-size: 1.75rem; font-weight: 700;">🚀 Mulai Streaming Lebih Cerdas</h2>
+                <p style="margin-top: 1rem; color: #374151;">
+                    StreamMate AI membantu kreator seperti Anda mengelola interaksi penonton secara real-time,
+                    memberikan saran konten, dan menghasilkan ringkasan otomatis. Cocok untuk streamer, podcaster, dan pembuat konten.
+                </p>
+                <div class="price">
+                    Rp 149.000 <span style="font-size: 1rem; font-weight: normal;">(Akses seumur hidup)</span>
+                </div>
+                <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20beli%20StreamMate%20AI" 
+                   class="btn-wa" 
+                   target="_blank">
+                    📲 Beli via WhatsApp
+                </a>
+                <p style="margin-top: 1rem; font-size: 0.875rem; color: #6b7280;">
+                    ✅ Pembayaran manual: transfer bank / e-wallet. Setelah transfer, produk akan dikirim ke WhatsApp Anda.
+                </p>
+            </div>
+            <div class="hero-image">
+                <!-- Ganti dengan gambar ilustrasi produk Anda -->
+                <img src="https://placehold.co/600x400/1e3a8a/white?text=StreamMate+AI+Dashboard" alt="StreamMate AI Preview">
+            </div>
+        </div>
+
+        <!-- Fitur Unggulan -->
+        <div class="features">
+            <div class="section-title">✨ Fitur Unggulan</div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🤖 Balasan Chat Otomatis</h3>
+                    <p>AI membalas pertanyaan umum penonton, mengurangi beban kerja Anda saat streaming.</p>
+                </div>
+                <div class="card">
+                    <h3>🎬 Highlight Otomatis</h3>
+                    <p>Deteksi momen seru dan buat clip pendek siap upload ke sosial media.</p>
+                </div>
+                <div class="card">
+                    <h3>📊 Analisis Engagement</h3>
+                    <p>Dashboard real-time untuk melihat metrik interaksi penonton dan saran peningkatan.</p>
+                </div>
+                <div class="card">
+                    <h3>🛠️ Integrasi Platform</h3>
+                    <p>Kompatibel dengan OBS, Streamlabs, dan platform streaming populer.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cara Pembelian -->
+        <div class="faq">
+            <div class="section-title" style="margin-bottom: 1rem;">🛒 Cara Beli Produk</div>
+            <div class="faq-item">
+                <div class="faq-question">1. Klik tombol “Beli via WhatsApp”</div>
+                <p>Anda akan terhubung dengan admin kami. Kirim pesan: <strong>“Saya ingin beli StreamMate AI”</strong>.</p>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">2. Lakukan pembayaran</div>
+                <p>Kami akan mengirimkan nomor rekening / e-wallet. Lakukan transfer sesuai harga yang tertera.</p>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">3. Produk dikirim</div>
+                <p>Setelah pembayaran dikonfirmasi, Anda akan menerima link unduh / akses produk digital via WhatsApp.</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            © 2025 StreamMate AI. Dibuat untuk membantu kreator Indonesia.<br>
+            Untuk dukungan, hubungi +62 812-3456-7890 (WhatsApp).
+        </div>
+    </div>
+</body>
+</html>
