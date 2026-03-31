@@ -119,6 +119,35 @@
             border-color: var(--primary);
         }
 
+        /* --- Efek Highlight Produk Terlaris --- */
+        .product-card.highlight {
+            border: 2px solid var(--primary);
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.15);
+            z-index: 2;
+        }
+
+        .product-card.highlight:hover {
+            transform: scale(1.03) translateY(-8px);
+        }
+
+        .badge-popular {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.4);
+            white-space: nowrap;
+        }
+
         .icon-box {
             width: 56px;
             height: 56px;
@@ -133,6 +162,12 @@
         }
 
         .product-card:hover .icon-box {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Ubah warna ikon khusus produk highlight */
+        .product-card.highlight .icon-box {
             background: var(--primary);
             color: white;
         }
@@ -222,6 +257,14 @@
         }
 
         .btn-buy:hover { background: var(--primary); transform: scale(1.05); }
+
+        /* Tombol khusus untuk produk highlight */
+        .product-card.highlight .btn-buy {
+            background: var(--primary);
+        }
+        .product-card.highlight .btn-buy:hover {
+            background: var(--text-main);
+        }
 
         .btn-detail {
             width: 100%;
@@ -320,6 +363,10 @@
             .testimonial-section { padding-bottom: 3rem; }
             .modal-container { height: 100%; max-height: 100vh; border-radius: 0; }
             .modal-footer { border-radius: 0; }
+            
+            /* Reset highlight transform di mobile agar tidak off-screen */
+            .product-card.highlight { transform: none; }
+            .product-card.highlight:hover { transform: translateY(-8px); }
         }
     </style>
 </head>
@@ -441,7 +488,8 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card highlight">
+            <div class="badge-popular">Paling Laris</div>
             <div class="icon-box"><i data-lucide="cpu"></i></div>
             <h3 class="product-title">Gemini Ultra AI</h3>
             <ul class="feature-list">
