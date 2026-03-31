@@ -99,7 +99,7 @@
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             margin-bottom: 5rem;
-            align-items: center; /* Untuk menyeimbangkan kartu yang di-highlight */
+            align-items: stretch;
         }
 
         .product-card {
@@ -119,7 +119,6 @@
             border-color: var(--primary);
         }
 
-        /* Highlight Card (Paling Laris) */
         .product-card.highlight {
             border: 2px solid var(--primary);
             transform: scale(1.05);
@@ -176,16 +175,38 @@
             margin-bottom: 0.75rem;
         }
 
-        .product-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
+        /* Bullet List Setup for Cards */
+        .feature-list {
+            list-style: none;
             margin-bottom: 2rem;
             flex-grow: 1;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .feature-list li i {
+            color: var(--secondary);
+            flex-shrink: 0;
+            margin-top: 2px;
         }
 
         .price-tag {
             border-top: 1px solid #f1f5f9;
             padding-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .price-wrapper {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -209,178 +230,180 @@
             align-items: center;
             gap: 8px;
             transition: 0.2s;
+            cursor: pointer;
+            border: none;
         }
 
-        .btn-buy:hover {
-            background: var(--primary-dark);
-        }
-        
-        /* Tombol khusus untuk produk highlight */
-        .product-card.highlight .btn-buy {
-            background: var(--primary);
-        }
-        .product-card.highlight .btn-buy:hover {
-            background: var(--text-main);
-        }
+        .btn-buy:hover { background: var(--primary-dark); }
+        .product-card.highlight .btn-buy { background: var(--primary); }
+        .product-card.highlight .btn-buy:hover { background: var(--text-main); }
 
-        /* --- Feature Grid Section --- */
-        .features-container {
-            margin-top: 6rem;
-            margin-bottom: 6rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .feature-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 24px;
-            border: 1px solid var(--border);
+        .btn-detail {
+            width: 100%;
+            background: #f1f5f9;
+            color: var(--text-main);
+            padding: 0.8rem;
+            border-radius: 12px;
             text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: 0.2s;
+        }
+
+        .btn-detail:hover {
+            background: white;
+            border-color: var(--border);
+        }
+
+        /* --- Modal (Pop-up) Styles --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-container {
+            background: white;
+            width: 100%;
+            max-width: 700px;
+            max-height: 90vh;
+            border-radius: 24px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            transition: 0.3s;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        .feature-icon-circle {
-            width: 64px;
-            height: 64px;
-            border-radius: 20px;
+        .modal-overlay.active .modal-container {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
+            justify-content: space-between;
         }
 
-        .feature-title {
+        .modal-header h2 {
+            font-size: 1.25rem;
             font-weight: 700;
-            font-size: 1.15rem;
-            margin-bottom: 0.75rem;
         }
 
-        .feature-desc {
-            font-size: 0.9rem;
+        .btn-close {
+            background: none;
+            border: none;
             color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px;
+            transition: 0.2s;
         }
 
-        /* --- Testimonial Slider Section --- */
-        .testimonial-section {
-            margin-bottom: 6rem;
-            position: relative;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+        .btn-close:hover { color: var(--text-main); }
+
+        .modal-body {
+            padding: 2rem;
+            overflow-y: auto;
+            color: var(--text-main);
         }
 
-        .slider-wrapper {
-            overflow: hidden;
-            border-radius: 24px;
-            padding: 10px; /* Space for shadow */
-        }
-
-        .slider-track {
+        .modal-body h3 {
+            font-size: 1.15rem;
+            color: var(--primary);
+            margin: 1.5rem 0 0.5rem 0;
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* Setiap card testimoni mengambil 100% lebar container */
-        .testi-card {
-            flex: 0 0 100%;
-            background: white;
-            padding: 3rem;
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
-            box-sizing: border-box;
+        .modal-body p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
-        .rating-stars {
-            display: flex;
-            gap: 4px;
-            color: #f59e0b;
+        .modal-body ul.desc-list {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .modal-body ul.desc-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .promo-box {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px dashed var(--secondary);
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 2rem;
             margin-bottom: 1.5rem;
         }
 
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 2rem;
-            border-top: 1px solid #f1f5f9;
-            padding-top: 1.5rem;
+        .modal-footer {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--border);
+            text-align: right;
+            background: #f8fafc;
+            border-radius: 0 0 24px 24px;
         }
 
-        .avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #f1f5f9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            color: var(--primary);
-            font-size: 1rem;
-        }
+        /* --- Testimonial & Features Grid (Tetap sama seperti sebelumnya) --- */
+        .features-container { margin-top: 6rem; margin-bottom: 6rem; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .feature-card { background: var(--card-bg); padding: 2.5rem; border-radius: 24px; border: 1px solid var(--border); text-align: center; display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
+        .feature-icon-circle { width: 64px; height: 64px; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+        .feature-title { font-weight: 700; font-size: 1.15rem; margin-bottom: 0.75rem; }
+        .feature-desc { font-size: 0.9rem; color: var(--text-muted); }
 
-        /* Slider Controls (Panah) */
-        .slider-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            color: var(--text-main);
-            z-index: 10;
-            transition: all 0.2s;
-        }
-
-        .slider-nav:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
+        .testimonial-section { margin-bottom: 6rem; position: relative; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .slider-wrapper { overflow: hidden; border-radius: 24px; padding: 10px; }
+        .slider-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .testi-card { flex: 0 0 100%; background: white; padding: 3rem; border-radius: 24px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); box-sizing: border-box; }
+        .rating-stars { display: flex; gap: 4px; color: #f59e0b; margin-bottom: 1.5rem; }
+        .user-info { display: flex; align-items: center; gap: 15px; margin-top: 2rem; border-top: 1px solid #f1f5f9; padding-top: 1.5rem; }
+        .avatar { width: 50px; height: 50px; border-radius: 50%; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--primary); font-size: 1rem; }
+        .slider-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: white; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); color: var(--text-main); z-index: 10; transition: all 0.2s; }
+        .slider-nav:hover { background: var(--primary); color: white; border-color: var(--primary); }
         .slider-nav.prev { left: -20px; }
         .slider-nav.next { right: -20px; }
 
-        /* --- Footer --- */
-        .footer {
-            text-align: center;
-            padding: 4rem 0;
-            border-top: 1px solid var(--border);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
+        .footer { text-align: center; padding: 4rem 0; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
 
         @media (max-width: 768px) {
             h1 { font-size: 2.25rem; }
-            .container { padding-top: 2rem; }
-            
-            /* Reset highlight effect on mobile to prevent horizontal overflow */
             .product-card.highlight { transform: none; }
             .product-card.highlight:hover { transform: translateY(-8px); }
-            
             .testi-card { padding: 2rem 1.5rem; }
-            /* Memindahkan panah ke bawah pada layar kecil agar tidak terpotong */
             .slider-nav { top: auto; bottom: -20px; transform: none; }
             .slider-nav.prev { left: 35%; }
             .slider-nav.next { right: 35%; }
-            .testimonial-section { padding-bottom: 3rem; }
         }
     </style>
 </head>
@@ -403,13 +426,22 @@
     <div class="products-grid">
         <div class="product-card">
             <div class="icon-box"><i data-lucide="video"></i></div>
-            <h3 class="product-title">AI Livestream TikTok</h3>
-            <p class="product-desc">Otomasi total live streaming. AI akan merespon komentar dan menjual produk Anda 24/7 tanpa henti.</p>
+            <h3 class="product-title">AI Livestream Pro</h3>
+            <ul class="feature-list">
+                <li><i data-lucide="check-circle" size="16"></i> <strong>Live 24 Jam:</strong> AI beroperasi nonstop tanpa lelah.</li>
+                <li><i data-lucide="check-circle" size="16"></i> <strong>Auto Spill:</strong> Balas komen & putar produk presisi.</li>
+                <li><i data-lucide="check-circle" size="16"></i> <strong>Hemat Biaya:</strong> Bebas gaji host bulanan.</li>
+            </ul>
             <div class="price-tag">
-                <span class="price-value">Rp 149k</span>
-                <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Livestream%20TikTok" class="btn-buy" target="_blank">
-                    Beli <i data-lucide="arrow-right" size="16"></i>
-                </a>
+                <div class="price-wrapper">
+                    <span class="price-value">Rp 250k</span>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Livestreamer%20Pro" class="btn-buy" target="_blank">
+                        Beli <i data-lucide="arrow-right" size="16"></i>
+                    </a>
+                </div>
+                <button class="btn-detail" onclick="openModal('modal-ai-live')">
+                    <i data-lucide="file-text" size="16" style="vertical-align: middle; margin-right: 4px;"></i> Lihat Detail Lengkap
+                </button>
             </div>
         </div>
 
@@ -417,24 +449,36 @@
             <div class="badge-popular">Paling Laris</div>
             <div class="icon-box"><i data-lucide="bot"></i></div>
             <h3 class="product-title">AI Assistant Pro</h3>
-            <p class="product-desc">Dashboard premium untuk TikTok & YouTube. Fitur analisis sentimen dan auto-clip untuk konten viral.</p>
+            <ul class="feature-list">
+                <li><i data-lucide="check-circle" size="16"></i> Dashboard lengkap TikTok & YouTube.</li>
+                <li><i data-lucide="check-circle" size="16"></i> Analisis sentimen komentar live.</li>
+                <li><i data-lucide="check-circle" size="16"></i> Auto-clip konten untuk jadi FYP.</li>
+            </ul>
             <div class="price-tag">
-                <span class="price-value">Rp 299k</span>
-                <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Assistant%20Pro" class="btn-buy" target="_blank">
-                    Beli <i data-lucide="arrow-right" size="16"></i>
-                </a>
+                <div class="price-wrapper">
+                    <span class="price-value">Rp 299k</span>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Assistant%20Pro" class="btn-buy" target="_blank">
+                        Beli <i data-lucide="arrow-right" size="16"></i>
+                    </a>
+                </div>
             </div>
         </div>
 
         <div class="product-card">
             <div class="icon-box"><i data-lucide="trending-up"></i></div>
             <h3 class="product-title">REX Indicator V2</h3>
-            <p class="product-desc">Sinyal trading presisi untuk Saham & Forex. Cocok untuk strategi Scalping dan Swing dengan sinyal akurat.</p>
+            <ul class="feature-list">
+                <li><i data-lucide="check-circle" size="16"></i> Akurasi tinggi untuk XAU/USD & Saham.</li>
+                <li><i data-lucide="check-circle" size="16"></i> Sinyal entry & exit super clean.</li>
+                <li><i data-lucide="check-circle" size="16"></i> Support MetaTrader & TradingView.</li>
+            </ul>
             <div class="price-tag">
-                <span class="price-value">Rp 500k</span>
-                <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20REX%20Indicator%20V2" class="btn-buy" target="_blank">
-                    Beli <i data-lucide="arrow-right" size="16"></i>
-                </a>
+                <div class="price-wrapper">
+                    <span class="price-value">Rp 500k</span>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20REX%20Indicator%20V2" class="btn-buy" target="_blank">
+                        Beli <i data-lucide="arrow-right" size="16"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -484,7 +528,7 @@
                         <i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i>
                     </div>
                     <p style="font-style: italic; font-size: 1.1rem; color: var(--text-main); line-height: 1.8;">
-                        "Sumpah ini ngebantu banget! Dulu paling pusing ngurus jadwal host live yang kadang telat, sakit, atau banyak drama. Pake AI dari Sarjana Gems ini, live toko saya jalan 24 jam nonstop tanpa henti. Omzet malah naik karena toko buka terus."
+                        "Sumpah ini ngebantu banget! Dulu paling pusing ngurus jadwal host live yang kadang telat atau banyak drama. Pake AI dari Sarjana Gems, live toko jalan 24 jam nonstop."
                     </p>
                     <div class="user-info">
                         <div class="avatar">RM</div>
@@ -500,7 +544,7 @@
                         <i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i>
                     </div>
                     <p style="font-style: italic; font-size: 1.1rem; color: var(--text-main); line-height: 1.8;">
-                        "Fitur auto-spill nya juara banget! Awalnya ragu apa bisa interaktif, ternyata pas ada penonton komen 'spill nomor 3 kak', AI-nya langsung otomatis muter video produk tersebut. Kelihatan natural banget kayak host beneran!"
+                        "Fitur auto-spill nya juara banget! Pas ada penonton komen 'spill nomor 3 kak', AI-nya langsung muter video produk tersebut. Natural banget kayak host beneran!"
                     </p>
                     <div class="user-info">
                         <div class="avatar">DP</div>
@@ -516,7 +560,7 @@
                         <i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i>
                     </div>
                     <p style="font-style: italic; font-size: 1.1rem; color: var(--text-main); line-height: 1.8;">
-                        "Akhirnya bisa tidur nyenyak tapi notif orderan tetep masuk! AI-nya pinter banget nyapa orang yang baru join dan langsung nawarin promo. Bangun pagi tinggal print resi dan rekap pesanan. Nyesel kenapa gak tau tools ini dari dulu."
+                        "Akhirnya bisa tidur nyenyak tapi notif orderan tetep masuk! AI pinter banget nyapa orang baru dan nawarin promo. Nyesel kenapa gak tau tools ini dari dulu."
                     </p>
                     <div class="user-info">
                         <div class="avatar">SA</div>
@@ -532,7 +576,7 @@
                         <i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i>
                     </div>
                     <p style="font-style: italic; font-size: 1.1rem; color: var(--text-main); line-height: 1.8;">
-                        "Gila sih, ini AI tapi responsif parah. Tiap ada penonton nanya harga atau ongkir di komen, langsung dibalesin otomatis dengan tepat. Engagement live saya naik drastis. Sangat worth it buat investasi jangka panjang!"
+                        "Gila sih, responsif parah. Penonton nanya harga di komen, langsung dibalesin otomatis dengan tepat. Sangat worth it buat investasi jangka panjang!"
                     </p>
                     <div class="user-info">
                         <div class="avatar">BS</div>
@@ -542,7 +586,6 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </section>
@@ -553,66 +596,127 @@
     </footer>
 </div>
 
+<div id="modal-ai-live" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2 style="display: flex; align-items: center; gap: 8px;"><i data-lucide="video" size="20" style="color: var(--primary);"></i> Spesifikasi AI Livestreamer Pro</h2>
+            <button class="btn-close" onclick="closeModal('modal-ai-live')"><i data-lucide="x"></i></button>
+        </div>
+        
+        <div class="modal-body">
+            <h3 style="margin-top: 0;">AI Host Live Streaming 24 Jam</h3>
+            <p><strong>Jualan Nonstop Tanpa Capek — AI yang Live, AI yang Jawab Chat, AI yang Closing.</strong></p>
+            <p>Bayangkan toko Anda tetap LIVE 24 jam, tetap menyapa penonton, tetap menawarkan produk, dan tetap menjawab komentar bahkan saat Anda sedang tidur. Sekarang hal itu bisa dilakukan dengan sistem AI yang bekerja seperti host live sungguhan.</p>
+            
+            <ul class="desc-list">
+                <li>Live otomatis 24 jam nonstop</li>
+                <li>Auto balas komentar penonton</li>
+                <li>Auto spill produk saat diminta</li>
+                <li>Suara natural seperti host manusia</li>
+                <li>Tanpa gaji host & tanpa biaya bulanan</li>
+                <li>Bayar sekali — pakai selamanya.</li>
+            </ul>
+
+            <hr style="border: 0; border-top: 1px solid var(--border); margin: 2rem 0;">
+
+            <h3><i data-lucide="star"></i> Fitur Unggulan</h3>
+            
+            <p><strong>🤖 AI Virtual Host (Live 24 Jam Nonstop)</strong><br>
+            Biarkan AI mengambil alih live Anda tanpa lelah. Otomatis menyapa penonton, membalas komentar, menawarkan promo, dan memutar video jualan nonstop.</p>
+
+            <p><strong>💬 Auto Balas Komentar & Smart Spill Produk</strong><br>
+            Ketika penonton ketik: <em>"Spill produk nomor 3"</em>, AI langsung membaca dan memutar video produk tersebut. Sangat interaktif!</p>
+
+            <p><strong>📡 RTMP-Only (Tanpa Virtual Camera)</strong><br>
+            Lebih ringan untuk multi-stream, anti error "kamera sibuk", dan jauh lebih stabil untuk menjalankan banyak akun bersamaan.</p>
+
+            <p><strong>🎬 Kualitas Stream Bisa Diatur</strong><br>
+            Atur Resolusi (1280x720 / 854x480), FPS, dan Bitrate sesuka hati menyesuaikan perangkat & koneksi Anda.</p>
+
+            <p><strong>🛡️ Sistem Proteksi Konten (Anti Flag)</strong><br>
+            Video dimodifikasi sistem agar terlihat fresh dan watermark dibersihkan. Aman dari suspend karena flag <em>reproduced content</em>.</p>
+
+            <p><strong>🎙️ Suara AI Natural (30+ Pilihan)</strong><br>
+            Tersedia puluhan gaya suara pria/wanita dengan intonasi jualan khas Indonesia & Melayu yang sangat hidup.</p>
+
+            <p><strong>📈 Marketing Tools Ganas</strong><br>
+            Dilengkapi Flash Sale Countdown, Notifikasi stok menipis, Running text promo, hingga QR Code voucher untuk konversi maksimal.</p>
+
+            <div class="promo-box">
+                <p style="color: var(--text-muted); text-decoration: line-through; margin: 0; font-size: 0.9rem;">Harga Normal: Rp 1.500.000</p>
+                <p style="color: var(--secondary); font-size: 1.5rem; font-weight: 800; margin: 5px 0;">Promo Lifetime: Rp 250.000</p>
+                <p style="color: var(--text-main); font-size: 0.85rem; margin: 0; font-weight: 600;">(Tanpa sistem koin & tanpa biaya bulanan)</p>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <a href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Livestreamer%20Pro" class="btn-buy" target="_blank" style="padding: 1rem 2rem;">
+                Beli via WhatsApp <i data-lucide="arrow-right" size="16"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
 <script>
     // 1. Activate Lucide Icons
     lucide.createIcons();
 
-    // 2. Logic untuk Testimonial Slider
+    // 2. Logic untuk Pop-up Modal
+    function openModal(modalId) {
+        document.getElementById(modalId).classList.add('active');
+        document.body.style.overflow = 'hidden'; // Kunci scroll di background
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).classList.remove('active');
+        document.body.style.overflow = 'auto'; // Buka kunci scroll
+    }
+
+    // Tutup modal jika user klik area gelap di luar kotak modal
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal-overlay')) {
+            event.target.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    // 3. Logic untuk Testimonial Slider (Sama persis dengan sebelumnya)
     const track = document.getElementById('sliderTrack');
     const slides = document.querySelectorAll('.testi-card');
     const btnPrev = document.getElementById('btnPrev');
     const btnNext = document.getElementById('btnNext');
-    
     let currentIndex = 0;
     const totalSlides = slides.length;
     let autoSlideInterval;
 
-    // Fungsi untuk menggeser slide
     function updateSliderPosition() {
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
 
-    // Fungsi ke slide berikutnya
     function nextSlide() {
         currentIndex++;
-        if (currentIndex >= totalSlides) {
-            currentIndex = 0;
-        }
+        if (currentIndex >= totalSlides) currentIndex = 0;
         updateSliderPosition();
     }
 
-    // Fungsi ke slide sebelumnya
     function prevSlide() {
         currentIndex--;
-        if (currentIndex < 0) {
-            currentIndex = totalSlides - 1;
-        }
+        if (currentIndex < 0) currentIndex = totalSlides - 1;
         updateSliderPosition();
     }
 
-    // Fungsi geser otomatis tiap 5 detik
     function startAutoSlide() {
         autoSlideInterval = setInterval(nextSlide, 5000);
     }
 
-    // Reset timer jika tombol diklik manual
     function resetAutoSlide() {
         clearInterval(autoSlideInterval);
         startAutoSlide();
     }
 
-    // Event Listener
-    btnNext.addEventListener('click', () => {
-        nextSlide();
-        resetAutoSlide();
-    });
-
-    btnPrev.addEventListener('click', () => {
-        prevSlide();
-        resetAutoSlide();
-    });
-
-    // Mulai slider saat halaman diload
+    btnNext.addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
+    btnPrev.addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
+    
     startAutoSlide();
 </script>
 
