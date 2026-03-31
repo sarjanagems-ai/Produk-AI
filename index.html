@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarjana Gems | Premium AI & Trading Tools</title>
+    <title>Sarjana Gems | Premium AI Tools & Automation</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
@@ -37,7 +37,7 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 1.5rem;
         }
@@ -77,7 +77,7 @@
         .subhead {
             font-size: 1.15rem;
             color: var(--text-muted);
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
@@ -87,8 +87,8 @@
             align-items: center;
             gap: 10px;
             font-weight: 700;
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
+            font-size: 1.35rem;
+            margin-bottom: 2.5rem;
             color: #1e293b;
             justify-content: center;
         }
@@ -96,7 +96,7 @@
         /* --- Product Cards Grid --- */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 2rem;
             margin-bottom: 5rem;
             align-items: stretch;
@@ -119,33 +119,6 @@
             border-color: var(--primary);
         }
 
-        .product-card.highlight {
-            border: 2px solid var(--primary);
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.15);
-            z-index: 2;
-        }
-
-        .product-card.highlight:hover {
-            transform: scale(1.05) translateY(-8px);
-        }
-
-        .badge-popular {
-            position: absolute;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
-            color: white;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.4);
-        }
-
         .icon-box {
             width: 56px;
             height: 56px;
@@ -164,15 +137,11 @@
             color: white;
         }
 
-        .product-card.highlight .icon-box {
-            background: var(--primary);
-            color: white;
-        }
-
         .product-title {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 700;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
         }
 
         /* Bullet List Setup for Cards */
@@ -212,17 +181,35 @@
             justify-content: space-between;
         }
 
+        .price-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-strike {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-decoration: line-through;
+            font-weight: 500;
+        }
+
         .price-value {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 800;
             color: var(--text-main);
+        }
+        
+        .price-tier {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
         }
 
         .btn-buy {
             background: var(--text-main);
             color: white;
-            padding: 0.8rem 1.4rem;
-            border-radius: 14px;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
@@ -234,9 +221,7 @@
             border: none;
         }
 
-        .btn-buy:hover { background: var(--primary-dark); }
-        .product-card.highlight .btn-buy { background: var(--primary); }
-        .product-card.highlight .btn-buy:hover { background: var(--text-main); }
+        .btn-buy:hover { background: var(--primary); transform: scale(1.05); }
 
         .btn-detail {
             width: 100%;
@@ -253,140 +238,69 @@
             transition: 0.2s;
         }
 
-        .btn-detail:hover {
-            background: white;
-            border-color: var(--border);
-        }
+        .btn-detail:hover { background: white; border-color: var(--border); }
 
         /* --- Modal (Pop-up) Styles --- */
         .modal-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(15, 23, 42, 0.7);
             backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
+            opacity: 0; visibility: hidden;
             transition: all 0.3s ease;
             padding: 1rem;
         }
 
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
 
         .modal-container {
-            background: white;
-            width: 100%;
-            max-width: 700px;
-            max-height: 90vh;
-            border-radius: 24px;
-            display: flex;
-            flex-direction: column;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
+            background: white; width: 100%; max-width: 700px; max-height: 90vh;
+            border-radius: 24px; display: flex; flex-direction: column;
+            transform: translateY(20px); transition: transform 0.3s ease;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        .modal-overlay.active .modal-container {
-            transform: translateY(0);
-        }
+        .modal-overlay.active .modal-container { transform: translateY(0); }
 
         .modal-header {
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            padding: 1.5rem 2rem; border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: space-between;
         }
 
-        .modal-header h2 {
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-
+        .modal-header h2 { font-size: 1.25rem; font-weight: 700; display: flex; align-items: center; gap: 8px;}
+        
         .btn-close {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            padding: 4px;
-            transition: 0.2s;
+            background: none; border: none; color: var(--text-muted);
+            cursor: pointer; padding: 4px; transition: 0.2s;
         }
-
         .btn-close:hover { color: var(--text-main); }
 
-        .modal-body {
-            padding: 2rem;
-            overflow-y: auto;
-            color: var(--text-main);
-        }
-
-        .modal-body h3 {
-            font-size: 1.15rem;
-            color: var(--primary);
-            margin: 1.5rem 0 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .modal-body p {
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        .modal-body ul.desc-list {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .modal-body ul.desc-list li {
-            margin-bottom: 0.5rem;
-        }
+        .modal-body { padding: 2rem; overflow-y: auto; color: var(--text-main); }
+        .modal-body h3 { font-size: 1.15rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+        .modal-body p { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7; }
+        .modal-body ul { margin-bottom: 1.5rem; padding-left: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+        .modal-body ul li { margin-bottom: 0.5rem; }
 
         .promo-box {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px dashed var(--secondary);
-            padding: 1.5rem;
-            border-radius: 16px;
-            text-align: center;
-            margin-top: 2rem;
-            margin-bottom: 1.5rem;
+            background: rgba(16, 185, 129, 0.05); border: 1px dashed var(--secondary);
+            padding: 1.5rem; border-radius: 16px; margin-top: 2rem; margin-bottom: 1.5rem;
         }
+        .promo-box-title { font-weight: 700; color: var(--text-main); margin-bottom: 10px; }
 
         .modal-footer {
-            padding: 1.5rem 2rem;
-            border-top: 1px solid var(--border);
-            text-align: right;
-            background: #f8fafc;
-            border-radius: 0 0 24px 24px;
+            padding: 1.5rem 2rem; border-top: 1px solid var(--border);
+            text-align: right; background: #f8fafc; border-radius: 0 0 24px 24px;
         }
 
-        /* --- Testimonial & Features Grid (Tetap sama seperti sebelumnya) --- */
-        .features-container { margin-top: 6rem; margin-bottom: 6rem; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .feature-card { background: var(--card-bg); padding: 2.5rem; border-radius: 24px; border: 1px solid var(--border); text-align: center; display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
-        .feature-icon-circle { width: 64px; height: 64px; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
-        .feature-title { font-weight: 700; font-size: 1.15rem; margin-bottom: 0.75rem; }
-        .feature-desc { font-size: 0.9rem; color: var(--text-muted); }
-
-        .testimonial-section { margin-bottom: 6rem; position: relative; max-width: 800px; margin-left: auto; margin-right: auto; }
+        /* --- Testimonial Section --- */
+        .testimonial-section { margin-top: 6rem; margin-bottom: 6rem; position: relative; max-width: 900px; margin-left: auto; margin-right: auto; }
         .slider-wrapper { overflow: hidden; border-radius: 24px; padding: 10px; }
         .slider-track { display: flex; transition: transform 0.5s ease-in-out; }
         .testi-card { flex: 0 0 100%; background: white; padding: 3rem; border-radius: 24px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); box-sizing: border-box; }
         .rating-stars { display: flex; gap: 4px; color: #f59e0b; margin-bottom: 1.5rem; }
+        .testi-product { display: inline-block; background: #e0e7ff; color: var(--primary); font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 100px; margin-bottom: 1rem; }
         .user-info { display: flex; align-items: center; gap: 15px; margin-top: 2rem; border-top: 1px solid #f1f5f9; padding-top: 1.5rem; }
         .avatar { width: 50px; height: 50px; border-radius: 50%; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--primary); font-size: 1rem; }
         .slider-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: white; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); color: var(--text-main); z-index: 10; transition: all 0.2s; }
@@ -394,16 +308,18 @@
         .slider-nav.prev { left: -20px; }
         .slider-nav.next { right: -20px; }
 
+        /* --- Footer --- */
         .footer { text-align: center; padding: 4rem 0; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
 
         @media (max-width: 768px) {
             h1 { font-size: 2.25rem; }
-            .product-card.highlight { transform: none; }
-            .product-card.highlight:hover { transform: translateY(-8px); }
             .testi-card { padding: 2rem 1.5rem; }
             .slider-nav { top: auto; bottom: -20px; transform: none; }
             .slider-nav.prev { left: 35%; }
             .slider-nav.next { right: 35%; }
+            .testimonial-section { padding-bottom: 3rem; }
+            .modal-container { height: 100%; max-height: 100vh; border-radius: 0; }
+            .modal-footer { border-radius: 0; }
         }
     </style>
 </head>
@@ -413,104 +329,140 @@
     <header class="header">
         <div class="badge-premium">
             <i data-lucide="sparkles" size="16"></i>
-            Premium Digital Hub
+            Premium AI Hub
         </div>
-        <h1>Maksimalkan Profit<br>Dengan Tools AI & Trading</h1>
-        <p class="subhead">Solusi cerdas untuk trader profesional dan seller TikTok yang ingin efisiensi tanpa batas.</p>
+        <h1>Maksimalkan Profit<br>Dengan Automasi & Tools AI</h1>
+        <p class="subhead">Solusi cerdas untuk konten kreator, streamer, dan pebisnis online yang ingin memangkas waktu kerja dan meningkatkan efisiensi.</p>
     </header>
 
     <div class="section-label">
-        <i data-lucide="package"></i> Produk Kami
+        <i data-lucide="grid"></i> Katalog Produk Digital
     </div>
 
     <div class="products-grid">
+        
         <div class="product-card">
             <div class="icon-box"><i data-lucide="video"></i></div>
-            <h3 class="product-title">AI Livestream Pro</h3>
+            <h3 class="product-title">AI Host Live Streaming 24 Jam</h3>
             <ul class="feature-list">
-                <li><i data-lucide="check-circle" size="16"></i> <strong>Live 24 Jam:</strong> AI beroperasi nonstop tanpa lelah.</li>
-                <li><i data-lucide="check-circle" size="16"></i> <strong>Auto Spill:</strong> Balas komen & putar produk presisi.</li>
-                <li><i data-lucide="check-circle" size="16"></i> <strong>Hemat Biaya:</strong> Bebas gaji host bulanan.</li>
+                <li><i data-lucide="check-circle" size="16"></i> Jualan nonstop tanpa capek.</li>
+                <li><i data-lucide="check-circle" size="16"></i> Auto balas chat & smart spill produk.</li>
+                <li><i data-lucide="check-circle" size="16"></i> Suara natural 30+ pilihan.</li>
             </ul>
             <div class="price-tag">
                 <div class="price-wrapper">
-                    <span class="price-value">Rp 250k</span>
-                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Livestreamer%20Pro" class="btn-buy" target="_blank">
-                        Beli <i data-lucide="arrow-right" size="16"></i>
-                    </a>
+                    <div class="price-info">
+                        <span class="price-strike">Rp 2.500.000</span>
+                        <span class="price-value">Rp 960.000</span>
+                    </div>
+                    <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Host%20Live%20Streaming%2024%20Jam" class="btn-buy" target="_blank">Beli <i data-lucide="arrow-right" size="16"></i></a>
                 </div>
-                <button class="btn-detail" onclick="openModal('modal-ai-live')">
-                    <i data-lucide="file-text" size="16" style="vertical-align: middle; margin-right: 4px;"></i> Lihat Detail Lengkap
-                </button>
-            </div>
-        </div>
-
-        <div class="product-card highlight">
-            <div class="badge-popular">Paling Laris</div>
-            <div class="icon-box"><i data-lucide="bot"></i></div>
-            <h3 class="product-title">AI Assistant Pro</h3>
-            <ul class="feature-list">
-                <li><i data-lucide="check-circle" size="16"></i> Dashboard lengkap TikTok & YouTube.</li>
-                <li><i data-lucide="check-circle" size="16"></i> Analisis sentimen komentar live.</li>
-                <li><i data-lucide="check-circle" size="16"></i> Auto-clip konten untuk jadi FYP.</li>
-            </ul>
-            <div class="price-tag">
-                <div class="price-wrapper">
-                    <span class="price-value">Rp 299k</span>
-                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Assistant%20Pro" class="btn-buy" target="_blank">
-                        Beli <i data-lucide="arrow-right" size="16"></i>
-                    </a>
-                </div>
+                <button class="btn-detail" onclick="openModal('modal-p1')"><i data-lucide="file-text" size="16" style="vertical-align: middle;"></i> Detail Lengkap</button>
             </div>
         </div>
 
         <div class="product-card">
-            <div class="icon-box"><i data-lucide="trending-up"></i></div>
-            <h3 class="product-title">REX Indicator V2</h3>
+            <div class="icon-box"><i data-lucide="headset"></i></div>
+            <h3 class="product-title">AI Live Stream Asistan Pro</h3>
             <ul class="feature-list">
-                <li><i data-lucide="check-circle" size="16"></i> Akurasi tinggi untuk XAU/USD & Saham.</li>
-                <li><i data-lucide="check-circle" size="16"></i> Sinyal entry & exit super clean.</li>
-                <li><i data-lucide="check-circle" size="16"></i> Support MetaTrader & TradingView.</li>
+                <li><i data-lucide="check-circle" size="16"></i> Vision Engine: AI pantau gameplay-mu.</li>
+                <li><i data-lucide="check-circle" size="16"></i> Reaksi heboh donasi & auto Mabar.</li>
+                <li><i data-lucide="check-circle" size="16"></i> YouTube & TikTok Chat Support.</li>
             </ul>
             <div class="price-tag">
                 <div class="price-wrapper">
-                    <span class="price-value">Rp 500k</span>
-                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20REX%20Indicator%20V2" class="btn-buy" target="_blank">
-                        Beli <i data-lucide="arrow-right" size="16"></i>
-                    </a>
+                    <div class="price-info">
+                        <span class="price-strike">Rp 1.500.000</span>
+                        <span class="price-value">Rp 500.000</span>
+                    </div>
+                    <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Live%20Stream%20Asistan%20Pro" class="btn-buy" target="_blank">Beli <i data-lucide="arrow-right" size="16"></i></a>
                 </div>
+                <button class="btn-detail" onclick="openModal('modal-p2')"><i data-lucide="file-text" size="16" style="vertical-align: middle;"></i> Detail Lengkap</button>
             </div>
         </div>
-    </div>
 
-    <section class="features-container">
-        <div class="section-label">
-            <i data-lucide="shield-check"></i> Mengapa Sarjana Gems?
-        </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon-circle" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
-                    <i data-lucide="zap" size="28"></i>
+        <div class="product-card">
+            <div class="icon-box"><i data-lucide="scissors"></i></div>
+            <h3 class="product-title">Clip Cepat (Auto Edit Video)</h3>
+            <ul class="feature-list">
+                <li><i data-lucide="check-circle" size="16"></i> Ubah video panjang jadi klip viral.</li>
+                <li><i data-lucide="check-circle" size="16"></i> AI Smart Crop (Visual & Audio).</li>
+                <li><i data-lucide="check-circle" size="16"></i> Batch edit puluhan video sekaligus.</li>
+            </ul>
+            <div class="price-tag">
+                <div class="price-wrapper">
+                    <div class="price-info">
+                        <span class="price-strike">Rp 350.000</span>
+                        <span class="price-value">Rp 80.000</span>
+                    </div>
+                    <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20Clip%20Cepat" class="btn-buy" target="_blank">Beli <i data-lucide="arrow-right" size="16"></i></a>
                 </div>
-                <h4 class="feature-title">Instant Delivery</h4>
-                <p class="feature-desc">Produk dikirim otomatis ke WhatsApp Anda sesaat setelah pembayaran terverifikasi.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon-circle" style="background: rgba(79, 70, 229, 0.1); color: var(--primary);">
-                    <i data-lucide="refresh-cw" size="28"></i>
-                </div>
-                <h4 class="feature-title">Update Lifetime</h4>
-                <p class="feature-desc">Nikmati pembaruan algoritma secara berkala untuk menjaga performa tools tetap maksimal.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon-circle" style="background: rgba(16, 185, 129, 0.1); color: var(--secondary);">
-                    <i data-lucide="headphones" size="28"></i>
-                </div>
-                <h4 class="feature-title">Priority Support</h4>
-                <p class="feature-desc">Layanan bantuan teknis 24/7 untuk memastikan instalasi dan penggunaan berjalan lancar.</p>
+                <button class="btn-detail" onclick="openModal('modal-p3')"><i data-lucide="file-text" size="16" style="vertical-align: middle;"></i> Detail Lengkap</button>
             </div>
         </div>
-    </section>
+
+        <div class="product-card">
+            <div class="icon-box"><i data-lucide="message-square"></i></div>
+            <h3 class="product-title">ChatGPT Pro</h3>
+            <ul class="feature-list">
+                <li><i data-lucide="check-circle" size="16"></i> Akses model AI bahasa terpopuler.</li>
+                <li><i data-lucide="check-circle" size="16"></i> Advanced Data Analysis & Coding.</li>
+                <li><i data-lucide="check-circle" size="16"></i> Pembuatan gambar instan (DALL-E 3).</li>
+            </ul>
+            <div class="price-tag">
+                <div class="price-wrapper">
+                    <div class="price-info">
+                        <div class="price-tier">1 Minggu: Rp 20.000</div>
+                        <div class="price-value">Rp 60.000<span style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);">/bln</span></div>
+                    </div>
+                    <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20ChatGPT%20Pro" class="btn-buy" target="_blank">Beli <i data-lucide="arrow-right" size="16"></i></a>
+                </div>
+                <button class="btn-detail" onclick="openModal('modal-p4')"><i data-lucide="file-text" size="16" style="vertical-align: middle;"></i> Detail Lengkap</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="icon-box"><i data-lucide="cloud"></i></div>
+            <h3 class="product-title">Gemini AI + 2TB Storage</h3>
+            <ul class="feature-list">
+                <li><i data-lucide="check-circle" size="16"></i> Terintegrasi dengan Google Workspace.</li>
+                <li><i data-lucide="check-circle" size="16"></i> Penyimpanan cloud raksasa 2TB.</li>
+                <li><i data-lucide="check-circle" size="16"></i> Penulisan & analisa dokumen otomatis.</li>
+            </ul>
+            <div class="price-tag">
+                <div class="price-wrapper">
+                    <div class="price-info">
+                        <div class="price-tier">1 Bulan Berlangganan</div>
+                        <span class="price-value">Rp 35.000</span>
+                    </div>
+                    <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20Gemini%20AI%20Plus%202TB" class="btn-buy" target="_blank">Beli <i data-lucide="arrow-right" size="16"></i></a>
+                </div>
+                <button class="btn-detail" onclick="openModal('modal-p5')"><i data-lucide="file-text" size="16" style="vertical-align: middle;"></i> Detail Lengkap</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="icon-box"><i data-lucide="cpu"></i></div>
+            <h3 class="product-title">Gemini Ultra AI</h3>
+            <ul class="feature-list">
+                <li><i data-lucide="check-circle" size="16"></i> Model flagship untuk logika & coding berat.</li>
+                <li><i data-lucide="check-circle" size="16"></i> Konteks window super panjang.</li>
+                <li><i data-lucide="check-circle" size="16"></i> Kecepatan respon tanpa batas ketat.</li>
+            </ul>
+            <div class="price-tag">
+                <div class="price-wrapper">
+                    <div class="price-info">
+                        <div class="price-tier">Mulai dari</div>
+                        <span class="price-strike" style="font-size: 0.75rem;">Rp 50.000</span>
+                        <span class="price-value">Rp 37.000<span style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);">/bln</span></span>
+                    </div>
+                    <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20Gemini%20Ultra%20AI" class="btn-buy" target="_blank">Beli <i data-lucide="arrow-right" size="16"></i></a>
+                </div>
+                <button class="btn-detail" onclick="openModal('modal-p6')"><i data-lucide="file-text" size="16" style="vertical-align: middle;"></i> Detail Lengkap</button>
+            </div>
+        </div>
+
+    </div>
 
     <section class="testimonial-section">
         <div class="section-label">
@@ -523,136 +475,231 @@
         <div class="slider-wrapper">
             <div class="slider-track" id="sliderTrack">
                 
-                <div class="testi-card">
-                    <div class="rating-stars">
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i>
-                    </div>
-                    <p style="font-style: italic; font-size: 1.1rem; color: var(--text-main); line-height: 1.8;">
-                        "Sumpah ini ngebantu banget! Dulu paling pusing ngurus jadwal host live yang kadang telat atau banyak drama. Pake AI dari Sarjana Gems, live toko jalan 24 jam nonstop."
-                    </p>
-                    <div class="user-info">
-                        <div class="avatar">RM</div>
-                        <div>
-                            <p style="font-weight: 700; font-size: 1rem;">Rina M.</p>
-                            <p style="font-size: 0.85rem; color: var(--text-muted);">Owner Fashion Store</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="testi-card"><div class="testi-product">AI Host Live Streaming 24 Jam</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Wah gila, toko buka 24 jam omzet ikutan naik. Gak perlu pusing bayar gaji host lagi, mantap banget solusinya!"</p><div class="user-info"><div class="avatar">RN</div><div><p style="font-weight: 700;">Rina N.</p><p style="font-size: 0.85rem; color: var(--text-muted);">Owner Fashion Store</p></div></div></div>
+                <div class="testi-card"><div class="testi-product">AI Host Live Streaming 24 Jam</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Host AI-nya pinter banget spill keranjang kuning. Tiap ada yang nanya di komen, langsung diputerin video produknya."</p><div class="user-info"><div class="avatar">BD</div><div><p style="font-weight: 700;">Budi S.</p><p style="font-size: 0.85rem; color: var(--text-muted);">Affiliate TikTok</p></div></div></div>
+                <div class="testi-card"><div class="testi-product">AI Host Live Streaming 24 Jam</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Akhirnya bisa tidur nyenyak tapi notif pesanan tetep masuk. Solusi wajib buat seller yang pengen jualan tanpa begadang."</p><div class="user-info"><div class="avatar">SK</div><div><p style="font-weight: 700;">Siska K.</p><p style="font-size: 0.85rem; color: var(--text-muted);">Seller Skincare</p></div></div></div>
 
-                <div class="testi-card">
-                    <div class="rating-stars">
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i>
-                    </div>
-                    <p style="font-style: italic; font-size: 1.1rem; color: var(--text-main); line-height: 1.8;">
-                        "Fitur auto-spill nya juara banget! Pas ada penonton komen 'spill nomor 3 kak', AI-nya langsung muter video produk tersebut. Natural banget kayak host beneran!"
-                    </p>
-                    <div class="user-info">
-                        <div class="avatar">DP</div>
-                        <div>
-                            <p style="font-weight: 700; font-size: 1rem;">Dika P.</p>
-                            <p style="font-size: 0.85rem; color: var(--text-muted);">TikTok Affiliate</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="testi-card"><div class="testi-product">AI Live Stream Asistan Pro</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Main game sambil dibacain chat sama AI, viewer pada ngakak denger voice-nya yang bisa ngeledek pas aku mati di game."</p><div class="user-info"><div class="avatar">RZ</div><div><p style="font-weight: 700;">Reza G.</p><p style="font-size: 0.85rem; color: var(--text-muted);">Gaming Streamer</p></div></div></div>
+                <div class="testi-card"><div class="testi-product">AI Live Stream Asistan Pro</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Fitur antrean mabarnya gila sih, rapi banget gak pake ribet ketik manual. Viewer ketik !mabar langsung masuk list."</p><div class="user-info"><div class="avatar">JK</div><div><p style="font-weight: 700;">Joko T.</p><p style="font-size: 0.85rem; color: var(--text-muted);">YouTuber Gaming</p></div></div></div>
+                <div class="testi-card"><div class="testi-product">AI Live Stream Asistan Pro</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Superchat langsung di-notice heboh sama AI-nya. Pendapatan donasi naik karena viewer seneng namanya dipanggil AI."</p><div class="user-info"><div class="avatar">FN</div><div><p style="font-weight: 700;">Fina R.</p><p style="font-size: 0.85rem; color: var(--text-muted);">VTuber / Streamer</p></div></div></div>
 
-                <div class="testi-card">
-                    <div class="rating-stars">
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i>
-                    </div>
-                    <p style="font-style: italic; font-size: 1.1rem; color: var(--text-main); line-height: 1.8;">
-                        "Akhirnya bisa tidur nyenyak tapi notif orderan tetep masuk! AI pinter banget nyapa orang baru dan nawarin promo. Nyesel kenapa gak tau tools ini dari dulu."
-                    </p>
-                    <div class="user-info">
-                        <div class="avatar">SA</div>
-                        <div>
-                            <p style="font-weight: 700; font-size: 1rem;">Siska A.</p>
-                            <p style="font-size: 0.85rem; color: var(--text-muted);">Seller Skincare</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="testi-card"><div class="testi-product">Clip Cepat</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Podcast 2 jam dipotong jadi 40 konten Shorts dalam hitungan menit. Gokil banget ngebantu kerjaan agency saya!"</p><div class="user-info"><div class="avatar">AR</div><div><p style="font-weight: 700;">Aris D.</p><p style="font-size: 0.85rem; color: var(--text-muted);">Digital Agency Owner</p></div></div></div>
+                <div class="testi-card"><div class="testi-product">Clip Cepat</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Auto crop-nya presisi banget, AI-nya tau bagian mana yang penting dan langsung nyesuain rasio layar buat TikTok."</p><div class="user-info"><div class="avatar">DN</div><div><p style="font-weight: 700;">Dina W.</p><p style="font-size: 0.85rem; color: var(--text-muted);">Content Creator</p></div></div></div>
+                <div class="testi-card"><div class="testi-product">Clip Cepat</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Nyesel dulu ngedit manual sampe begadang. Pake Clip Cepat tinggal masukin video YouTube, ditinggal ngopi udah jadi."</p><div class="user-info"><div class="avatar">TM</div><div><p style="font-weight: 700;">Tomi P.</p><p style="font-size: 0.85rem; color: var(--text-muted);">Social Media Manager</p></div></div></div>
 
-                <div class="testi-card">
-                    <div class="rating-stars">
-                        <i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i>
-                    </div>
-                    <p style="font-style: italic; font-size: 1.1rem; color: var(--text-main); line-height: 1.8;">
-                        "Gila sih, responsif parah. Penonton nanya harga di komen, langsung dibalesin otomatis dengan tepat. Sangat worth it buat investasi jangka panjang!"
-                    </p>
-                    <div class="user-info">
-                        <div class="avatar">BS</div>
-                        <div>
-                            <p style="font-weight: 700; font-size: 1rem;">Bima S.</p>
-                            <p style="font-size: 0.85rem; color: var(--text-muted);">Owner Gadget Store</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="testi-card"><div class="testi-product">ChatGPT Pro</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Beli langganan di sini aman & lancar banget. Fitur GPT-4o nya kepake banget buat nulis script iklan & copywriting jualan."</p><div class="user-info"><div class="avatar">LN</div><div><p style="font-weight: 700;">Lina M.</p><p style="font-size: 0.85rem; color: var(--text-muted);">Copywriter</p></div></div></div>
+                <div class="testi-card"><div class="testi-product">ChatGPT Pro</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Gak pusing lagi mentok mikir ide konten. Tinggal perintah, semuanya dibikinin cepet. Plus bikin gambar DALL-E 3 juga bisa."</p><div class="user-info"><div class="avatar">HD</div><div><p style="font-weight: 700;">Hadi S.</p><p style="font-size: 0.85rem; color: var(--text-muted);">Digital Marketer</p></div></div></div>
+                <div class="testi-card"><div class="testi-product">ChatGPT Pro</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Adminnya fast respon, prosesnya instan. Sangat membantu kerjaan kantor, terutama fitur Advanced Data Analysis."</p><div class="user-info"><div class="avatar">AY</div><div><p style="font-weight: 700;">Ayu L.</p><p style="font-size: 0.85rem; color: var(--text-muted);">Data Analyst</p></div></div></div>
+
+                <div class="testi-card"><div class="testi-product">Gemini AI + 2TB Storage</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Dapet AI premium plus Google Drive 2TB cuma segini? Worth it parah buat nyimpen file raw video YouTube saya."</p><div class="user-info"><div class="avatar">KK</div><div><p style="font-weight: 700;">Kiki R.</p><p style="font-size: 0.85rem; color: var(--text-muted);">Video Editor</p></div></div></div>
+                <div class="testi-card"><div class="testi-product">Gemini AI + 2TB Storage</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Integrasi langsung sama Google Docs dan Gmail bikin kerjaan nulis email ngebantu banget. Asli mempermudah hidup."</p><div class="user-info"><div class="avatar">DW</div><div><p style="font-weight: 700;">Dewi A.</p><p style="font-size: 0.85rem; color: var(--text-muted);">Admin & Sekretaris</p></div></div></div>
+                <div class="testi-card"><div class="testi-product">Gemini AI + 2TB Storage</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Kapasitas super lega, respon AI-nya cepat dan logis. Harganya juga masuk akal banget. Recommended buat mahasiswa!"</p><div class="user-info"><div class="avatar">BG</div><div><p style="font-weight: 700;">Bagas W.</p><p style="font-size: 0.85rem; color: var(--text-muted);">Mahasiswa Akhir</p></div></div></div>
+
+                <div class="testi-card"><div class="testi-product">Gemini Ultra AI</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Gemini Ultra beda kelas sih buat urusan benerin source code dan analisa data panjang. Akurat dan jarang halusinasi."</p><div class="user-info"><div class="avatar">RO</div><div><p style="font-weight: 700;">Rio P.</p><p style="font-size: 0.85rem; color: var(--text-muted);">Software Developer</p></div></div></div>
+                <div class="testi-card"><div class="testi-product">Gemini Ultra AI</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Langsung ambil paket 3 bulan sekalian soalnya jatuhnya lebih murah. Bener-bener asisten riset yang mantap."</p><div class="user-info"><div class="avatar">SR</div><div><p style="font-weight: 700;">Sari T.</p><p style="font-size: 0.85rem; color: var(--text-muted);">Peneliti Independen</p></div></div></div>
+                <div class="testi-card"><div class="testi-product">Gemini Ultra AI</div><div class="rating-stars"><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i><i data-lucide="star" size="20" fill="#f59e0b"></i></div><p style="font-style: italic; font-size: 1.1rem; color: var(--text-main);">"Prompt panjang berhalaman-halaman tetep bisa diproses dengan cepat sama Ultra. Super puas sama layanannya."</p><div class="user-info"><div class="avatar">AN</div><div><p style="font-weight: 700;">Andi L.</p><p style="font-size: 0.85rem; color: var(--text-muted);">System Analyst</p></div></div></div>
+
             </div>
         </div>
     </section>
 
     <footer class="footer">
         <p>&copy; 2026 Sarjana Gems. Crafted for Professional Growth.</p>
-        <p style="margin-top: 12px; font-size: 0.8rem;">Hubungi Kami: +62 812-3456-7890 (WhatsApp)</p>
+        <p style="margin-top: 12px; font-size: 0.8rem;">Hubungi Kami: +62 895-4191-00905 (WhatsApp)</p>
     </footer>
 </div>
 
-<div id="modal-ai-live" class="modal-overlay">
+<div id="modal-p1" class="modal-overlay">
     <div class="modal-container">
         <div class="modal-header">
-            <h2 style="display: flex; align-items: center; gap: 8px;"><i data-lucide="video" size="20" style="color: var(--primary);"></i> Spesifikasi AI Livestreamer Pro</h2>
-            <button class="btn-close" onclick="closeModal('modal-ai-live')"><i data-lucide="x"></i></button>
+            <h2><i data-lucide="video" size="20" style="color: var(--primary);"></i> AI Host Live Streaming 24 Jam</h2>
+            <button class="btn-close" onclick="closeModal('modal-p1')"><i data-lucide="x"></i></button>
         </div>
-        
         <div class="modal-body">
-            <h3 style="margin-top: 0;">AI Host Live Streaming 24 Jam</h3>
             <p><strong>Jualan Nonstop Tanpa Capek — AI yang Live, AI yang Jawab Chat, AI yang Closing.</strong></p>
-            <p>Bayangkan toko Anda tetap LIVE 24 jam, tetap menyapa penonton, tetap menawarkan produk, dan tetap menjawab komentar bahkan saat Anda sedang tidur. Sekarang hal itu bisa dilakukan dengan sistem AI yang bekerja seperti host live sungguhan.</p>
-            
-            <ul class="desc-list">
+            <p>Bayangkan toko Anda tetap LIVE 24 jam, tetap menyapa penonton, menawarkan produk, dan menjawab komentar saat Anda tidur. Sekarang hal itu bisa dilakukan dengan sistem AI yang bekerja seperti host sungguhan.</p>
+            <ul>
                 <li>Live otomatis 24 jam nonstop</li>
                 <li>Auto balas komentar penonton</li>
                 <li>Auto spill produk saat diminta</li>
                 <li>Suara natural seperti host manusia</li>
-                <li>Tanpa gaji host & tanpa biaya bulanan</li>
-                <li>Bayar sekali — pakai selamanya.</li>
+                <li>Tanpa gaji host & biaya bulanan (Bayar sekali pakai selamanya)</li>
             </ul>
-
-            <hr style="border: 0; border-top: 1px solid var(--border); margin: 2rem 0;">
-
-            <h3><i data-lucide="star"></i> Fitur Unggulan</h3>
+            <h3><i data-lucide="star"></i> Feature Unggulan</h3>
+            <p><strong>🤖 AI Virtual Host:</strong> Tanpa lelah, tanpa drama. Menyapa penonton baru, menawarkan promo, memutar video jualan.</p>
+            <p><strong>💬 Smart Spill Produk:</strong> Penonton ketik "Spill produk nomor 3", AI otomatis memutar video produk tersebut.</p>
+            <p><strong>📡 RTMP-Only:</strong> Tanpa Virtual Camera. Lebih ringan untuk multi-stream dan menghindari error kamera.</p>
+            <p><strong>🛡️ Sistem Proteksi Konten:</strong> Video dimodifikasi agar terlihat fresh (anti-flag / re-upload).</p>
+            <p><strong>🎙️ Suara AI Natural:</strong> 30+ pilihan suara pria/wanita bergaya promosi (Indo & Melayu).</p>
+            <p><strong>📈 Marketing Tools Ganas:</strong> Flash Sale Countdown, Notifikasi stok, Running text promo, hingga QR Code voucher.</p>
             
-            <p><strong>🤖 AI Virtual Host (Live 24 Jam Nonstop)</strong><br>
-            Biarkan AI mengambil alih live Anda tanpa lelah. Otomatis menyapa penonton, membalas komentar, menawarkan promo, dan memutar video jualan nonstop.</p>
-
-            <p><strong>💬 Auto Balas Komentar & Smart Spill Produk</strong><br>
-            Ketika penonton ketik: <em>"Spill produk nomor 3"</em>, AI langsung membaca dan memutar video produk tersebut. Sangat interaktif!</p>
-
-            <p><strong>📡 RTMP-Only (Tanpa Virtual Camera)</strong><br>
-            Lebih ringan untuk multi-stream, anti error "kamera sibuk", dan jauh lebih stabil untuk menjalankan banyak akun bersamaan.</p>
-
-            <p><strong>🎬 Kualitas Stream Bisa Diatur</strong><br>
-            Atur Resolusi (1280x720 / 854x480), FPS, dan Bitrate sesuka hati menyesuaikan perangkat & koneksi Anda.</p>
-
-            <p><strong>🛡️ Sistem Proteksi Konten (Anti Flag)</strong><br>
-            Video dimodifikasi sistem agar terlihat fresh dan watermark dibersihkan. Aman dari suspend karena flag <em>reproduced content</em>.</p>
-
-            <p><strong>🎙️ Suara AI Natural (30+ Pilihan)</strong><br>
-            Tersedia puluhan gaya suara pria/wanita dengan intonasi jualan khas Indonesia & Melayu yang sangat hidup.</p>
-
-            <p><strong>📈 Marketing Tools Ganas</strong><br>
-            Dilengkapi Flash Sale Countdown, Notifikasi stok menipis, Running text promo, hingga QR Code voucher untuk konversi maksimal.</p>
-
             <div class="promo-box">
-                <p style="color: var(--text-muted); text-decoration: line-through; margin: 0; font-size: 0.9rem;">Harga Normal: Rp 1.500.000</p>
-                <p style="color: var(--secondary); font-size: 1.5rem; font-weight: 800; margin: 5px 0;">Promo Lifetime: Rp 250.000</p>
-                <p style="color: var(--text-main); font-size: 0.85rem; margin: 0; font-weight: 600;">(Tanpa sistem koin & tanpa biaya bulanan)</p>
+                <div class="promo-box-title">🔥 Spesial Diskon</div>
+                <p style="color: var(--text-muted); text-decoration: line-through; margin: 0; font-size: 0.9rem;">Harga Normal: Rp 2.500.000</p>
+                <p style="color: var(--secondary); font-size: 1.5rem; font-weight: 800; margin: 5px 0;">Hanya Rp 960.000</p>
             </div>
         </div>
-
         <div class="modal-footer">
-            <a href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Livestreamer%20Pro" class="btn-buy" target="_blank" style="padding: 1rem 2rem;">
-                Beli via WhatsApp <i data-lucide="arrow-right" size="16"></i>
-            </a>
+            <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Host%20Live%20Streaming%2024%20Jam" class="btn-buy" target="_blank">Beli via WhatsApp <i data-lucide="arrow-right" size="16"></i></a>
+        </div>
+    </div>
+</div>
+
+<div id="modal-p2" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2><i data-lucide="headset" size="20" style="color: var(--primary);"></i> AI Live Stream Assistant PRO</h2>
+            <button class="btn-close" onclick="closeModal('modal-p2')"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+            <p><strong>Streaming Nggak Pernah Sepi Lagi — AI yang Baca Chat, Hype Donasi, Bahkan Ngomel Saat Kamu Mati!</strong></p>
+            <p>Pernah kehabisan bahan ngobrol saat Live? Biarkan AI Live Stream Assistant PRO yang menghidupkan channel kamu. Asisten cerdas ini akan membaca chat, merespon donasi, memandu mabar, dan bereaksi pada gameplay-mu.</p>
+            
+            <h3><i data-lucide="star"></i> Feature Unggulan</h3>
+            <p><strong>👁️ Vision Engine:</strong> AI melihat layar gameplay kamu! Mendeteksi saat karakter hampir mati, bereaksi saat bertemu boss, dan mengomentari gameplay walau chat sepi.</p>
+            <p><strong>🗣️ Suara Ultra Realistis:</strong> Integrasi ElevenLabs & Google Gemini TTS dengan intonasi emosional dan natural layaknya manusia.</p>
+            <p><strong>🎭 Personality AI Dinamis:</strong> Buat karakter AI sendiri (Tsundere, Streamer alay, Pro player sok jago, Karakter anime). Suara dan reaksi berubah sesuai keramaian chat.</p>
+            <p><strong>🎧 Auto BGM Ducking:</strong> Musik mengecil otomatis saat AI berbicara layaknya radio profesional.</p>
+            <p><strong>💬 Multi-Platform Support:</strong> Support YouTube Live (Chat & SuperChat) dan TikTok Live (Komen, Gift, Share).</p>
+            <p><strong>🌟 SuperChat Priority:</strong> AI menyebut nama donatur dengan heboh dan menyimpan mereka sebagai VIP.</p>
+            <p><strong>🎮 Auto Mabar Queue:</strong> Viewer ketik <code>!mabar</code> langsung masuk antrean. Streamer tinggal panggil otomatis via AI.</p>
+            <p><strong>🤫 Idle Survival Mode:</strong> Saat chat sepi, AI akan melempar jokes atau ngobrol lore game untuk memancing interaksi.</p>
+
+            <div class="promo-box">
+                <div class="promo-box-title">🔥 Spesial Diskon</div>
+                <p style="color: var(--text-muted); text-decoration: line-through; margin: 0; font-size: 0.9rem;">Harga Normal: Rp 1.500.000</p>
+                <p style="color: var(--secondary); font-size: 1.5rem; font-weight: 800; margin: 5px 0;">Hanya Rp 500.000</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20AI%20Live%20Stream%20Asistan%20Pro" class="btn-buy" target="_blank">Beli via WhatsApp <i data-lucide="arrow-right" size="16"></i></a>
+        </div>
+    </div>
+</div>
+
+<div id="modal-p3" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2><i data-lucide="scissors" size="20" style="color: var(--primary);"></i> Clip Cepat - Auto Edit Video</h2>
+            <button class="btn-close" onclick="closeModal('modal-p3')"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+            <p><strong>Edit Video Otomatis dengan AI. Dari Video Panjang ke Konten Viral dalam Hitungan Menit.</strong></p>
+            <p>Aplikasi AI-powered video automation untuk kreator konten yang ingin produksi lebih cepat tanpa ribet editing manual. Mengubah workflow <em>"Berjam-jam"</em> menjadi <em>"1 Klik Langsung Jadi"</em>.</p>
+
+            <h3><i data-lucide="star"></i> Feature Unggulan</h3>
+            <p><strong>🧠 AI Smart Crop:</strong> Potong berdasarkan KONTEN. AI menemukan momen visual tertentu (misal: kucing melompat) atau deteksi ucapan audio. Ditambah <em>Auto Context Padding</em> agar klip tidak terpotong tiba-tiba.</p>
+            <p><strong>⚡ Batch Processing:</strong> Import puluhan video sekaligus, biarkan proses berjalan di background tanpa bikin PC lag.</p>
+            <p><strong>✂️ Advanced Editing Tools:</strong> Aspect Ratio otomatis (9:16 untuk TikTok/Shorts), Smart Split memecah 1 jam podcast jadi 60 klip pendek, dan custom crop position.</p>
+            <p><strong>🎨 Branding & Watermark:</strong> Pasang logo PNG dengan opacity & posisi presisi ke ratusan video secara instan.</p>
+            <p><strong>🎵 Audio Mixing Otomatis:</strong> Inject backsound ke klip edukasi/motivasi dengan volume mixing yang seimbang secara AI.</p>
+            <p><strong>📥 Integrated Downloader:</strong> Download langsung video YouTube atau TikTok (tanpa watermark) dan masukkan ke antrean edit.</p>
+
+            <div class="promo-box">
+                <div class="promo-box-title">🔥 Spesial Diskon</div>
+                <p style="color: var(--text-muted); text-decoration: line-through; margin: 0; font-size: 0.9rem;">Harga Normal: Rp 350.000</p>
+                <p style="color: var(--secondary); font-size: 1.5rem; font-weight: 800; margin: 5px 0;">Hanya Rp 80.000</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20Clip%20Cepat" class="btn-buy" target="_blank">Beli via WhatsApp <i data-lucide="arrow-right" size="16"></i></a>
+        </div>
+    </div>
+</div>
+
+<div id="modal-p4" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2><i data-lucide="message-square" size="20" style="color: var(--primary);"></i> ChatGPT Pro</h2>
+            <button class="btn-close" onclick="closeModal('modal-p4')"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+            <p><strong>Tingkatkan Produktivitas Anda dengan Asisten AI Terpopuler di Dunia.</strong></p>
+            <p>Akses fitur-fitur premium dari ChatGPT untuk keperluan profesional, pembuatan konten, coding, hingga analisis data mendalam yang tidak bisa dilakukan di versi gratis.</p>
+
+            <h3><i data-lucide="star"></i> Yang Anda Dapatkan</h3>
+            <ul>
+                <li><strong>Akses Prioritas ke GPT-4o:</strong> Model bahasa tercerdas dengan kecepatan respon super instan.</li>
+                <li><strong>DALL-E 3 Image Generation:</strong> Buat gambar dan ilustrasi profesional hanya dengan mendeskripsikannya.</li>
+                <li><strong>Advanced Data Analysis:</strong> Upload file Excel/CSV/PDF, biarkan AI yang membaca, merangkum, dan membuatkan grafik untuk Anda.</li>
+                <li><strong>Web Browsing Real-time:</strong> ChatGPT dapat mencari informasi terbaru di internet (tidak terbatas data lama).</li>
+                <li><strong>Custom GPTs:</strong> Akses jutaan plugin pintar yang dibuat oleh komunitas untuk berbagai tugas spesifik.</li>
+            </ul>
+
+            <div class="promo-box">
+                <div class="promo-box-title">💳 Pilihan Paket</div>
+                <p style="color: var(--text-main); font-size: 1.1rem; font-weight: 700; margin: 5px 0;">1 Minggu: Rp 20.000</p>
+                <p style="color: var(--text-main); font-size: 1.1rem; font-weight: 700; margin: 5px 0;">1 Bulan: Rp 60.000</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20ChatGPT%20Pro" class="btn-buy" target="_blank">Beli via WhatsApp <i data-lucide="arrow-right" size="16"></i></a>
+        </div>
+    </div>
+</div>
+
+<div id="modal-p5" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2><i data-lucide="cloud" size="20" style="color: var(--primary);"></i> Gemini AI + 2TB Storage</h2>
+            <button class="btn-close" onclick="closeModal('modal-p5')"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+            <p><strong>Kombinasi Sempurna: Kecerdasan AI Premium & Penyimpanan Cloud Raksasa.</strong></p>
+            <p>Paket ini memberikan Anda akses ke layanan Google Workspace kelas atas. Sangat cocok bagi Anda yang butuh storage besar untuk file kerja/video sekaligus butuh bantuan AI untuk produktivitas.</p>
+
+            <h3><i data-lucide="star"></i> Fitur Utama</h3>
+            <ul>
+                <li><strong>Gemini Advanced Terintegrasi:</strong> AI yang siap membantu Anda menulis email langsung dari Gmail, atau merangkum tulisan di Google Docs.</li>
+                <li><strong>2 Terabyte (2000 GB) Google Drive:</strong> Simpan jutaan foto resolusi tinggi, project video raw, dan backup data penting tanpa khawatir memori penuh.</li>
+                <li><strong>Performa Analisis Super:</strong> AI pintar dari Google yang handal menyusun strategi bisnis, coding, hingga penyusunan laporan kompleks.</li>
+                <li><strong>Keamanan Google Cloud:</strong> Data Anda dilindungi oleh arsitektur keamanan tingkat tinggi dari Google.</li>
+            </ul>
+
+            <div class="promo-box">
+                <div class="promo-box-title">💳 Harga Langganan</div>
+                <p style="color: var(--text-main); font-size: 1.5rem; font-weight: 800; margin: 5px 0;">Hanya Rp 35.000 / Bulan</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20Gemini%20AI%20Plus%202TB" class="btn-buy" target="_blank">Beli via WhatsApp <i data-lucide="arrow-right" size="16"></i></a>
+        </div>
+    </div>
+</div>
+
+<div id="modal-p6" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2><i data-lucide="cpu" size="20" style="color: var(--primary);"></i> Gemini Ultra AI</h2>
+            <button class="btn-close" onclick="closeModal('modal-p6')"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+            <p><strong>Model AI Paling Mutakhir dari Google untuk Tugas Kelas Berat.</strong></p>
+            <p>Dirancang untuk developer, peneliti, dan data scientist. Gemini Ultra adalah versi tertinggi yang unggul dalam logika kompleks, penalaran (*reasoning*), dan pemrograman lintas bahasa.</p>
+
+            <h3><i data-lucide="star"></i> Keunggulan Versi Ultra</h3>
+            <ul>
+                <li><strong>Konteks Window Raksasa:</strong> Masukkan ratusan lembar PDF, source code panjang, atau buku penuh ke dalam prompt. AI akan mengingat dan memahaminya tanpa terputus.</li>
+                <li><strong>Expert Coding & Debugging:</strong> Sangat akurat dalam menemukan bug tersembunyi, merapikan struktur kode, dan menulis logika algoritma dari nol.</li>
+                <li><strong>Kemampuan Multimodal:</strong> Menganalisis video, gambar, dan audio secara simultan dengan tingkat akurasi yang lebih tinggi dibanding versi standar.</li>
+                <li><strong>Prioritas Server:</strong> Respon lebih stabil, lebih cepat, dan tidak mudah terkena limit meskipun digunakan saat jam sibuk.</li>
+            </ul>
+
+            <div class="promo-box">
+                <div class="promo-box-title">🔥 Harga Spesial</div>
+                <p style="margin: 5px 0;">
+                    <span style="color: var(--text-muted); text-decoration: line-through; font-size: 0.9rem;">Normal: 50.000/bln</span><br>
+                    <strong>1 Bulan: <span style="color: var(--secondary); font-size: 1.2rem;">Rp 37.000</span></strong>
+                </p>
+                <hr style="border-top: 1px dashed var(--secondary); opacity: 0.3; margin: 10px 0;">
+                <p style="margin: 5px 0;">
+                    <span style="color: var(--text-muted); text-decoration: line-through; font-size: 0.9rem;">Normal: 150.000/3 bln</span><br>
+                    <strong>3 Bulan: <span style="color: var(--secondary); font-size: 1.2rem;">Rp 115.000</span></strong>
+                </p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="https://wa.me/62895419100905?text=Halo%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20Gemini%20Ultra%20AI" class="btn-buy" target="_blank">Beli via WhatsApp <i data-lucide="arrow-right" size="16"></i></a>
         </div>
     </div>
 </div>
@@ -664,15 +711,15 @@
     // 2. Logic untuk Pop-up Modal
     function openModal(modalId) {
         document.getElementById(modalId).classList.add('active');
-        document.body.style.overflow = 'hidden'; // Kunci scroll di background
+        document.body.style.overflow = 'hidden'; 
     }
 
     function closeModal(modalId) {
         document.getElementById(modalId).classList.remove('active');
-        document.body.style.overflow = 'auto'; // Buka kunci scroll
+        document.body.style.overflow = 'auto'; 
     }
 
-    // Tutup modal jika user klik area gelap di luar kotak modal
+    // Tutup modal jika user klik luar modal
     window.onclick = function(event) {
         if (event.target.classList.contains('modal-overlay')) {
             event.target.classList.remove('active');
@@ -680,7 +727,7 @@
         }
     }
 
-    // 3. Logic untuk Testimonial Slider (Sama persis dengan sebelumnya)
+    // 3. Logic untuk Testimonial Slider
     const track = document.getElementById('sliderTrack');
     const slides = document.querySelectorAll('.testi-card');
     const btnPrev = document.getElementById('btnPrev');
